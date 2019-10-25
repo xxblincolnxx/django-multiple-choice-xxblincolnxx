@@ -1,4 +1,4 @@
-# Instructions
+# Group Project 2
 
 This week, you will be in a team of three or four people working on a project. You should use [GitHub issues](https://guides.github.com/features/issues/) to keep track of who is working on what, and should use [feature branches](https://bocoup.com/blog/git-workflow-walkthrough-feature-branches) for development.
 
@@ -14,7 +14,7 @@ Some ideas:
 
 * [Allow users to authenticate via Google or other third-party auth](https://www.intenct.nl/projects/django-allauth/)
 * [Try Dragula for drag and drop](https://bevacqua.github.io/dragula/)
-* [Use Restless to build an API](https://restless.readthedocs.io/en/latest/)
+* [Use Django REST Framework to build an API](https://www.django-rest-framework.org/)
 
 # The Projects
 
