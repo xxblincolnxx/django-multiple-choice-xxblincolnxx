@@ -1,4 +1,4 @@
-# Group Project 2
+# Multiple Choice Project
 
 This week, you will choose one of three projects to work on.
 
