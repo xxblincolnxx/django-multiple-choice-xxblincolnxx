@@ -1,14 +1,14 @@
 # Group Project 2
 
-This week, you will be in a team of three or four people working on a project. You should use [GitHub issues](https://guides.github.com/features/issues/) to keep track of who is working on what, and should use [feature branches](https://bocoup.com/blog/git-workflow-walkthrough-feature-branches) for development.
+This week, you will choose one of three projects to work on.
 
-Your team's creativity and common sense should be used as you work. There are common features to web applications that users expect. If they are not mentioned in the project's description, you should still do them. For example: in the Question Box application, users should have avatar images. You don't have to handle file uploads yourself -- you could use Gravatar with [django-gravatar](https://github.com/twaddington/django-gravatar) -- but you need some way of handling that.
+Your creativity and common sense should be used as you work. There are common features to web applications that users expect. If they are not mentioned in the project's description, you should still do them. For example: in the Question Box application, users should have avatar images. You don't have to handle file uploads yourself -- you could use Gravatar with [django-gravatar](https://github.com/twaddington/django-gravatar) -- but you need some way of handling that.
 
 Likewise, come up with your own features to make your project unique. You will likely use this project in your portfolio, so make it stand out!
 
 ## Trying new things
 
-Each team should try something they don't know how to do on their project. This could be a Python or JavaScript library they haven't used before or a feature of Django they haven't tried.
+You should try something they don't know how to do on their project. This could be a Python or JavaScript library you haven't used before or a feature of Django you haven't tried.
 
 Some ideas:
 
