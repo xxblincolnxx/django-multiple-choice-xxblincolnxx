@@ -14,10 +14,13 @@ class Card(models.Model):
 class FigureCard(Card):
     raw_image = models.FileField(
         upload_to='images', null=True, verbose_name=None)
+    card_type = 'figure_card'
 
 class TextCard(Card):
     question = models.CharField(max_length=100, blank=True, null=True)
+    card_type = 'text_card'
 
 class Deck(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
-    cards = models.ManyToManyField(Card, related_name='decks')
+    figure_cards = models.ManyToManyField(FigureCard, related_name='decks')
+    text_cards = models.ManyToManyField(TextCard, related_name='decks')

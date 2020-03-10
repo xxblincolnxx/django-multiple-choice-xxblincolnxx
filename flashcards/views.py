@@ -8,7 +8,6 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 
 
-
 class CardView(viewsets.ModelViewSet):
     """
     Handles routing for POST, PATCH, GET, DELETE, etc.
@@ -18,7 +17,6 @@ class CardView(viewsets.ModelViewSet):
 
 
 class FigureCardView(viewsets.ModelViewSet):
-   
     queryset = FigureCard.objects.all()
     serializer_class = FigureCardSerializer
 
@@ -31,6 +29,11 @@ class TextCardView(viewsets.ModelViewSet):
 class DeckView(viewsets.ModelViewSet):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
+
+def homepage(request):
+    return render(request, 'flashcards/index.html')
+
+
 
 
 # @require_POST #POST OR WHATEVER YOURE USING
