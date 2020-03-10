@@ -8,15 +8,17 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 
 
+
 class CardView(viewsets.ModelViewSet):
+    """
+    Handles routing for POST, PATCH, GET, DELETE, etc.
+    """
     queryset = Card.objects.select_subclasses()
     serializer_class = CardSerializer
 
 
 class FigureCardView(viewsets.ModelViewSet):
-    """
-    Handles routing for POST, PATCH, GET, DELETE, etc.
-    """
+   
     queryset = FigureCard.objects.all()
     serializer_class = FigureCardSerializer
 
