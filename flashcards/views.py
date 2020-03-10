@@ -1,18 +1,35 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .models import Card
-from .serializers import CardSerializer
+from .models import Card, FigureCard, TextCard, Deck
+from .serializers import CardSerializer, FigureCardSerializer, TextCardSerializer, DeckSerializer
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 import json
 
+
 class CardView(viewsets.ModelViewSet):
+    queryset = Card.objects.select_subclasses()
+    serializer_class = CardSerializer
+
+
+class FigureCardView(viewsets.ModelViewSet):
     """
     Handles routing for POST, PATCH, GET, DELETE, etc.
     """
-    queryset = Card.objects.all()
-    serializer_class = CardSerializer
+    queryset = FigureCard.objects.all()
+    serializer_class = FigureCardSerializer
+
+
+class TextCardView(viewsets.ModelViewSet):
+    queryset = TextCard.objects.all()
+    serializer_class = TextCardSerializer
+
+
+class DeckView(viewsets.ModelViewSet):
+    queryset = Deck.objects.all()
+    serializer_class = DeckSerializer
+
 
 # @require_POST #POST OR WHATEVER YOURE USING
 # @csrf_exempt #IF YOU DONT WANT A CSRF TOKEN

@@ -8,5 +8,4 @@ router.register('card', views.CardView )
 
 urlpatterns = [
    path('', include(router.urls)),
-   path('accounts/', include('registration.backends.default.urls'))
 ]

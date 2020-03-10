@@ -15,6 +15,9 @@ django-debug-toolbar = "*"
 werkzeug = "*"
 django-environ = "*"
 djangorestframework = "*"
+django-registration-redux = "*"
+pillow = "*"
+django-model-utils = "*"
 
 [requires]
 python_version = "3.7"
