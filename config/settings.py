@@ -43,12 +43,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'flashcards',
 
     # Third-party
+    'registration,'
     'debug_toolbar',
     'django_extensions',
+    'rest_framework',
 
     # Project-specific
     'users',
@@ -129,6 +130,9 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
+
 # Custom user model
 
 AUTH_USER_MODEL = 'users.User'
@@ -140,3 +144,7 @@ INTERNAL_IPS = [
     '127.0.0.1',
     # ...
 ]
+
+REGISTRATION_DEFAULT_FROM_EMAIL = True
+REGISTRATION_EMAIL_HTML = True
+LOGIN_REDIRECT_URL = '/'
