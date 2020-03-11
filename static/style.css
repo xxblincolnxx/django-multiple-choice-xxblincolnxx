@@ -1,0 +1,26 @@
+
+:root {
+    --Black: rgba(8, 7, 5, 1);
+    --Gray: rgba(64, 67, 78, 1);
+    --Wine: rgba(112, 38, 50, 1);
+    --Topaz: rgba(145, 47, 64, 1);
+    --Babypowder: rgba(255, 255, 250, 1);
+    --title-font: 'Julius Sans One', sans-serif;
+    --title-font2: 'Cabin Sketch', cursive;
+    --serif-font: 'Vollkorn', serif;
+    --sans-serif: 'Montserrat', sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+    padding: 0;
+}
+
+img {
+	max-width:100%;
+}
+
+p {
+    font-family: var(--sans-serif);
+}

@@ -11,14 +11,17 @@ class Card(models.Model):
     subject = models.CharField(max_length=100, blank=True, null=True)
     objects = InheritanceManager()
 
+
 class FigureCard(Card):
     raw_image = models.FileField(
         upload_to='images', null=True, verbose_name=None)
     card_type = 'figure_card'
 
+
 class TextCard(Card):
     question = models.CharField(max_length=100, blank=True, null=True)
     card_type = 'text_card'
+
 
 class Deck(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
