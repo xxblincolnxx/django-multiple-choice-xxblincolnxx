@@ -30,6 +30,9 @@ class DeckView(viewsets.ModelViewSet):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
 
+
+
+
 def homepage(request):
     return render(request, 'flashcards/index.html')
 

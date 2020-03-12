@@ -2,13 +2,16 @@
 :root {
     --Black: rgba(8, 7, 5, 1);
     --Gray: rgba(64, 67, 78, 1);
-    --Wine: rgba(112, 38, 50, 1);
-    --Topaz: rgba(145, 47, 64, 1);
+    --Lime: rgb(133, 214, 137);
+    --Topaz: rgb(184, 95, 110);
+    --Glow: rgb(252, 255, 101);
+    --GlowBlue: rgb(46, 112, 255);
+    --Light-Orange: rgb(255, 172, 62);
     --Babypowder: rgba(255, 255, 250, 1);
-    --title-font: 'Julius Sans One', sans-serif;
-    --title-font2: 'Cabin Sketch', cursive;
-    --serif-font: 'Vollkorn', serif;
-    --sans-serif: 'Montserrat', sans-serif;
+    --Babypowder2: rgba(255, 255, 250, 0.8);
+    --title-font: 'Righteous', cursive;
+    --title-font2: 'Fredoka One', cursive;;
+    --normal: 'Roboto Mono', monospace;
 }
 
 * {
@@ -21,6 +24,81 @@ img {
 	max-width:100%;
 }
 
-p {
-    font-family: var(--sans-serif);
+.container {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: var(--Light-Orange);
 }
+
+.shadow {
+    box-shadow: -3px 3px 4px var(--Black)
+}
+
+.header {
+    width: 100%;
+    background-color: var(--Lime);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    text-align: center;
+    
+}
+
+.title {
+    margin-left: 10px;
+    font-family: var(--title-font2);
+    font-size: 4rem;
+    padding: 20px;
+    color: var(--Babypowder);
+    text-shadow: 0px 0px 5px var(--Topaz),0px 0px 20px var(--Glow);
+}
+
+.sub-title {
+    margin-left: 10px;
+    font-family: var(--title-font2);
+    font-size: 1.5rem;
+    padding: 5px;
+    color: var(--Babypowder);
+    text-shadow: -2px 2px 4px var(--Gray);
+    background-color: var(--Lime);
+}
+
+.nav {
+    display: flex;
+    width: 100%;
+    background-color: var(--Gray);
+    justify-content: space-between;
+    color: var(--Babypowder2);
+    border-top: 1px solid var(--Babypowder);
+    justify-content: center;
+    /* box-shadow: -1px 1px 4px var(--Black) */
+}
+
+.nav-list {
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    color: var(--Babypowder2);
+}
+
+.nav-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right:20px;
+}
+
+.nav-item a{
+    color: var(--Babypowder);
+    font-weight: bold;
+    font-family: var(--normal); 
+    text-decoration: none;
+}
+
+.nav-item a:hover{
+    /* color: var(--Topaz); */
+    font-weight: bold;
+    text-shadow: 0px 0px 5px var(--Glow);
+}
+
+    
