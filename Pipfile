@@ -18,6 +18,8 @@ djangorestframework = "*"
 django-registration-redux = "*"
 pillow = "*"
 django-model-utils = "*"
+psycopg2 = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.8"

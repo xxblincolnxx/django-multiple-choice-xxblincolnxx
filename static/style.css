@@ -140,6 +140,7 @@ img {
     width: 100%;
     margin-top: 5px;
     margin-bottom: 5px;
+    cursor: pointer;
     /* text-align: center; */
 }
 
@@ -166,5 +167,10 @@ img {
 .prev1 {
     font-weight: bold;
     text-decoration: underline;
+    cursor: pointer;
+}
+
+.prev2 {
+    cursor: pointer;
 }
 
