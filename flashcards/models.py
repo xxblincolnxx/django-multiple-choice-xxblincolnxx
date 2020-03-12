@@ -15,12 +15,12 @@ class Card(models.Model):
 class FigureCard(Card):
     raw_image = models.FileField(
         upload_to='images', null=True, verbose_name=None)
-    card_type = 'figure_card'
+    card_type = 'Figure'
 
 
 class TextCard(Card):
     question = models.CharField(max_length=100, blank=True, null=True)
-    card_type = 'text_card'
+    card_type = 'Text'
 
 
 class Deck(models.Model):

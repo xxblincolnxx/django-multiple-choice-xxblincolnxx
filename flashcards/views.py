@@ -31,10 +31,9 @@ class DeckView(viewsets.ModelViewSet):
     serializer_class = DeckSerializer
 
 
-
-
 def homepage(request):
-    return render(request, 'flashcards/index.html')
+    cards = Card.objects.all()
+    return render(request, 'flashcards/index.html', {'cards': cards})
 
 
 

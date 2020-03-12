@@ -15,4 +15,13 @@
     </ul>
 </nav>
 </div>
+<div class='col'>
+    <p class='col-heading'>Recently Added</p>
+    {% for card in cards %}
+    <div id={{card.pk}} class="col-item">
+        <p class='prev1'>{{card.title}}</p>
+        <p class='prev2'>{{card.subject}}</p>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

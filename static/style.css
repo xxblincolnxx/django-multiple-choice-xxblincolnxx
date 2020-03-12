@@ -1,14 +1,15 @@
 
 :root {
-    --Black: rgba(8, 7, 5, 1);
-    --Gray: rgba(64, 67, 78, 1);
-    --Lime: rgb(133, 214, 137);
+    --Black: rgba(8, 7, 5, .5);
+    --Gray: rgb(57, 74, 75);
+    --Lime: rgb(162, 199, 164);
     --Topaz: rgb(184, 95, 110);
     --Glow: rgb(252, 255, 101);
     --GlowBlue: rgb(46, 112, 255);
-    --Light-Orange: rgb(255, 172, 62);
-    --Babypowder: rgba(255, 255, 250, 1);
-    --Babypowder2: rgba(255, 255, 250, 0.8);
+    --stroke-green: rgb(37, 51, 56);
+    --background: rgba(255, 255, 250, 1);
+    --background2: rgba(255, 255, 250, 0.8);
+    --background3: rgba(173, 173, 171, 0.8);
     --title-font: 'Righteous', cursive;
     --title-font2: 'Fredoka One', cursive;;
     --normal: 'Roboto Mono', monospace;
@@ -28,16 +29,17 @@ img {
     width: 70%;
     margin: 0 auto;
     margin-top: 100px;
-    background-color: var(--Light-Orange);
+    background-color: var(--background3);
 }
 
 .shadow {
-    box-shadow: -3px 3px 4px var(--Black)
+    box-shadow: -3px 3px 4px var(--Black);
+    border-radius: 5px
 }
 
 .header {
     width: 100%;
-    background-color: var(--Lime);
+    background-color: var(--stroke-green);
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     text-align: center;
@@ -49,7 +51,7 @@ img {
     font-family: var(--title-font2);
     font-size: 4rem;
     padding: 20px;
-    color: var(--Babypowder);
+    color: var(--background2);
     text-shadow: 0px 0px 5px var(--Topaz),0px 0px 20px var(--Glow);
 }
 
@@ -58,7 +60,7 @@ img {
     font-family: var(--title-font2);
     font-size: 1.5rem;
     padding: 5px;
-    color: var(--Babypowder);
+    color: var(--background);
     text-shadow: -2px 2px 4px var(--Gray);
     background-color: var(--Lime);
 }
@@ -68,9 +70,11 @@ img {
     width: 100%;
     background-color: var(--Gray);
     justify-content: space-between;
-    color: var(--Babypowder2);
-    border-top: 1px solid var(--Babypowder);
+    color: var(--background2);
+    border-top: 1px solid var(--background);
     justify-content: center;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
     /* box-shadow: -1px 1px 4px var(--Black) */
 }
 
@@ -79,7 +83,7 @@ img {
     display: flex;
     justify-content: space-between;
     list-style: none;
-    color: var(--Babypowder2);
+    color: var(--background);
 }
 
 .nav-item {
@@ -89,7 +93,7 @@ img {
 }
 
 .nav-item a{
-    color: var(--Babypowder);
+    color: var(--background);
     font-weight: bold;
     font-family: var(--normal); 
     text-decoration: none;
@@ -101,4 +105,46 @@ img {
     text-shadow: 0px 0px 5px var(--Glow);
 }
 
-    
+.col {
+    width: 33.33%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--Gray);
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: -3px 3px 4px var(--Black);
+}
+
+.col-heading {
+    font-family: var(--normal);
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--background);
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-shadow: 0px 0px 10px var(--Glow);
+}
+
+.col-item {
+    background: var(--background2);
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    box-shadow: -3px 3px 4px var(--Black);
+    font-family: var(--normal);
+    color: var(--Gray)
+}
+
+.col-item:hover{
+    box-shadow: 0px 0px 3px var(--Topaz),0px 0px 10px var(--Glow);
+}
+
+.prev1 {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
