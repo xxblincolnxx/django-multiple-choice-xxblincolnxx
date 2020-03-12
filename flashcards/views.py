@@ -33,7 +33,8 @@ class DeckView(viewsets.ModelViewSet):
 
 def homepage(request):
     cards = Card.objects.all()
-    return render(request, 'flashcards/index.html', {'cards': cards})
+    decks = Deck.objects.all()
+    return render(request, 'flashcards/index.html', {'cards': cards, 'decks': decks})
 
 
 
