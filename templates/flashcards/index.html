@@ -18,8 +18,8 @@
 </div>
 <main class='main row'>
     <div class='col'>
-        <p class='col-heading'>Recently Added</p>
-        <div class='col-container'>
+        <p data-stuff='col1' class='col-heading'>Recently Added</p>
+        <div id='col1' class='col-container dn'>
             {% for card in cards %}
             <div id={{card.pk}} class="col-item">
                 <p class='prev1'>{{card.title}}</p>
@@ -30,23 +30,32 @@
         </div>
     </div>
     <div class='col mid'>
-        <p class='col-heading'>My Decks</p>
-        <div class='col-container'>
+        <p data-stuff='col2' class='col-heading'>My Decks</p>
+        <div id='col2' class='col-container dn'>
+            {% if decks.count == 0 %}
+            <div>
+                <p class='col-item'>You have no decks!</p>
+            </div>
+            {% endif %}
+            {% for deck in decks %}
             <div id={{deck.pk}} class="col-item">
                 <p class='prev1'>{{deck.title}}</p>
                 <p class='prev2'>{{deck.subject}}</p>
             </div>
+            {% endfor %}
         </div>
     </div>
     <div class='col'>
-        <p class='col-heading'>New Card</p>
-        <div class='col-container'>
+        <p data-stuff='col3'class='col-heading'>New Card</p>
+        <div id='col3' class='col-container dn'>
             <div id='button-row' class='button-row'>
                 <button id='select_text' data-form='text-card-create' class='col-butt '>Text</button>
                 <button id='select_figure'data-form='figure-card-create'class='col-butt '>Figure</button>
             </div>
             <form id='text-card-create' action="" method='POST' class='col-form col-item dn'><p>THIS IS THE TEXT FORM</p></form>
-            <form id='figure-card-create' action="" method='POST' class='col-form col-item dn'><p>THIS IS THE FIGURE FORM</p></form>
+            <form id='figure-card-create' action="" method='POST' class='col-form col-item dn'><p>THIS IS THE FIGURE FORM</p>
+            <button type='submit' class=''>CREATE</button>
+            </form>
         </div>
     </div>
 </main>
