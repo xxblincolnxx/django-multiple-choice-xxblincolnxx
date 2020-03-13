@@ -20,7 +20,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -32,13 +32,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'authapp',
+    
     'flashcards',
 
     # Third-party
     'debug_toolbar',
     'django_extensions',
     'rest_framework',
+    'rest_framework.authtoken',
     'django_heroku',
+    'djoser',
 
     # Project-specific
     'users',
@@ -153,3 +157,14 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication'
+    ],
+    'DEFAULT_PERMISSIONS_CLASSES': {
+        'rest_framework.permissions.IsAuthenticated',
+    }
+}

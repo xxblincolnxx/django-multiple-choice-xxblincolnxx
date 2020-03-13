@@ -26,12 +26,10 @@ img {
 	max-width:100%;
 }
 
-
-
 .container {
     width: 70%;
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 70px;
     background-color: var(--background2);
     justify-content: flex-start
 }
@@ -213,9 +211,44 @@ img {
 .col-form {
     background-color: var(--background2);
     color: var(--Gray);
-
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
 }
 
+.col-form label{
+    width: 35%;
+    font-weight: bold;
+    font-size: .8rem;
+    text-align: right;
+}
+
+.col-form input, textarea {
+    width: 64%;
+    padding: 5px;
+    margin: 1px;
+}
+
+.form-butt {
+    width: 100%;
+    padding: 5px;
+    margin: 3px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: var(--normal);
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--background2);
+    background-color: var(--stroke-green);
+    border-radius: 5px;
+}
+
+.form-butt:hover {
+    box-shadow: 0px 0px 3px var(--Topaz),0px 0px 10px var(--Glow);
+    background-color:var(--background2);
+    color: var(--stroke-green)
+}
 
 @media only screen and (max-width: 800px){
     .container {
@@ -237,8 +270,15 @@ img {
     .col {
         width: 100%;
     }
-
+    .col-form label{
+        width: 12%;
+    }
+    
+    .col-form input, textarea {
+        width: 87%;
+    }
 }
+
 
 .dn {
     display: none;

@@ -10,6 +10,7 @@ urlpatterns = [
     path('', flashcard_views.homepage, name='home' ),
     path('api/', include('flashcards.urls')),
     path('accounts/', include('registration.backends.default.urls')),
+    path('auth/', include('authapp.urls'))
 ]
 
 if settings.DEBUG:

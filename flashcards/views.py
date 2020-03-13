@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from .models import Card, FigureCard, TextCard, Deck
+from .forms import FigureCardForm, TextCardForm
 from .serializers import CardSerializer, FigureCardSerializer, TextCardSerializer, DeckSerializer
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
@@ -34,7 +35,9 @@ class DeckView(viewsets.ModelViewSet):
 def homepage(request):
     cards = Card.objects.all()
     decks = Deck.objects.all()
-    return render(request, 'flashcards/index.html', {'cards': cards, 'decks': decks})
+    f_form = FigureCardForm()
+    t_form = TextCardForm()
+    return render(request, 'flashcards/index.html', {'cards': cards, 'decks': decks, 'f_form': f_form, 't_form': t_form})
 
 
 

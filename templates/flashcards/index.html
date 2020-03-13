@@ -33,9 +33,7 @@
         <p data-stuff='col2' class='col-heading'>My Decks</p>
         <div id='col2' class='col-container dn'>
             {% if decks.count == 0 %}
-            <div>
-                <p class='col-item'>You have no decks!</p>
-            </div>
+            <p class='col-item'>You have no decks!</p>
             {% endif %}
             {% for deck in decks %}
             <div id={{deck.pk}} class="col-item">
@@ -52,9 +50,15 @@
                 <button id='select_text' data-form='text-card-create' class='col-butt '>Text</button>
                 <button id='select_figure'data-form='figure-card-create'class='col-butt '>Figure</button>
             </div>
-            <form id='text-card-create' action="" method='POST' class='col-form col-item dn'><p>THIS IS THE TEXT FORM</p></form>
-            <form id='figure-card-create' action="" method='POST' class='col-form col-item dn'><p>THIS IS THE FIGURE FORM</p>
-            <button type='submit' class=''>CREATE</button>
+            <form id='text-card-create' action="" method='POST' class='col-form col-item dn'>
+                {% csrf_token %}
+                {{t_form.as_table}}
+                <button type='submit' class='form-butt'>CREATE</button>
+            </form>
+            <form id='figure-card-create' action="" method='POST' class='col-form col-item dn'>
+                {% csrf_token %}
+                {{f_form.as_table}}
+            <button type='submit' class='form-butt'>CREATE</button>
             </form>
         </div>
     </div>

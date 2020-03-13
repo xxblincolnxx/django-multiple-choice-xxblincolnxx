@@ -21,6 +21,7 @@ django-model-utils = "*"
 psycopg2 = "*"
 django-heroku = "*"
 gunicorn = "*"
+djoser = "*"
 
 [requires]
 python_version = "3.8"
