@@ -24,7 +24,7 @@ function pageRun () {
       const formQuery = event.target.dataset.form
       const forms = dQSA('.col-form')
       for (const form of forms) {
-        if (form.id === formQuery) {
+        if (form.id === formQuery && form.classList.contains('dn')) {
           show(form)
         } else {
           hide(form)
