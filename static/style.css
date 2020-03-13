@@ -26,11 +26,15 @@ img {
 	max-width:100%;
 }
 
+.dn {
+    display: none;
+}
+
 .container {
     width: 70%;
     margin: 0 auto;
     margin-top: 100px;
-    background-color: var(--background3);
+    background-color: var(--background2);
     justify-content: flex-start
 }
 
@@ -138,8 +142,9 @@ img {
     /* font-size: 1.5rem; */
     color: var(--background);
     width: 100%;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    /* margin-top: 5px;
+    margin-bottom: 5px; */
+    margin: 5px;
     cursor: pointer;
     /* text-align: center; */
 }
@@ -174,3 +179,23 @@ img {
     cursor: pointer;
 }
 
+.col-butt {
+    width: 45%;
+    font-style: var(--normal);
+    font-size: 1rem;
+    padding: 2px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: var(--background2);
+    border-radius: 5px;
+    color: var(--Gray)
+}
+
+.col-butt:hover{
+    box-shadow: 0px 0px 3px var(--Topaz),0px 0px 10px var(--Glow);
+}
+
+.button-row {
+    width: 100%;
+    display: flex;
+}

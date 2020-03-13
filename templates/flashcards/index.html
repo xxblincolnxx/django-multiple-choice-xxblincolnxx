@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% block meta %}
+<script src="{% static 'js/home.js' %}" defer></script>
+{% endblock %}
 {% block content %}
 <div class='shadow'>
 <header class='header'>
@@ -33,6 +36,13 @@
     </div>
     <div class='col'>
         <p class='col-heading'>New Card</p>
+        <div id='button-row' class='button-row'>
+            <button id='select_text' data-form='text-card-create' class='col-butt '>Text</button>
+            <button id='select_figure'data-form='figure-card-create'class='col-butt '>Figure</button>
+        </div>
+        <form id='text-card-create' action="" method='POST' class='col-form dn'><p>THIS IS THE TEXT FORM</p></form>
+        <form id='figure-card-create' action="" method='POST' class='col-form dn'><p>THIS IS THE FIGURE FORM</p></form>
+
     </div>
 </main>
 
