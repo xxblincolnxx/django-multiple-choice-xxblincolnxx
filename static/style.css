@@ -131,6 +131,13 @@ img {
     box-shadow: -3px 3px 4px var(--Black);
 }
 
+.col-container {
+    display: flex;
+    width: 100%;
+    border-top: 0.2px solid var(--Topaz);
+    flex-wrap: wrap;
+}
+
 .mid {
     margin-right: 10px;
     margin-left: 10px;
@@ -181,10 +188,14 @@ img {
 
 .col-butt {
     width: 45%;
-    font-style: var(--normal);
+    font-family: var(--normal);
     font-size: 1rem;
-    padding: 2px;
-    margin: 5px;
+    font-weight: bold;
+    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     cursor: pointer;
     background-color: var(--background2);
     border-radius: 5px;
@@ -198,4 +209,11 @@ img {
 .button-row {
     width: 100%;
     display: flex;
+    justify-content: space-between;
+}
+
+.col-form {
+    background-color: var(--background2);
+    color: var(--Gray);
+
 }

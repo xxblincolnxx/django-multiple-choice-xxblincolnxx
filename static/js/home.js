@@ -15,7 +15,7 @@ function show (element) {
   element.classList.remove('dn')
 }
 
-// -------------------------BASIC HIDE AND SHOW--------------------
+// -------------------BASIC HIDE AND SHOW--------------------
 
 function pageRun () {
   const buttons = dQSA('.col-butt')

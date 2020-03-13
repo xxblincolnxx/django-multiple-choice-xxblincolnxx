@@ -29,7 +29,7 @@ class FigureCard(Card):
 
 
 class TextCard(Card):
-    question = models.CharField(max_length=100, blank=True, null=True)
+    question = models.TextField(blank=True, null=True)
     card_type = 'Text'
 
 

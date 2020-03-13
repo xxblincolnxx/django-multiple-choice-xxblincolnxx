@@ -19,30 +19,35 @@
 <main class='main row'>
     <div class='col'>
         <p class='col-heading'>Recently Added</p>
-        {% for card in cards %}
-        <div id={{card.pk}} class="col-item">
-            <p class='prev1'>{{card.title}}</p>
-            <p class='prev2'>{{card.subject}}</p>
-            <p class='prev2'>{{card.type}}</p>
+        <div class='col-container'>
+            {% for card in cards %}
+            <div id={{card.pk}} class="col-item">
+                <p class='prev1'>{{card.title}}</p>
+                <p class='prev2'>{{card.subject}}</p>
+                <p class='prev2'>{{card.type}}</p>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
     <div class='col mid'>
         <p class='col-heading'>My Decks</p>
-        <div id={{deck.pk}} class="col-item">
-            <p class='prev1'>{{deck.title}}</p>
-            <p class='prev2'>{{deck.subject}}</p>
+        <div class='col-container'>
+            <div id={{deck.pk}} class="col-item">
+                <p class='prev1'>{{deck.title}}</p>
+                <p class='prev2'>{{deck.subject}}</p>
+            </div>
         </div>
     </div>
     <div class='col'>
         <p class='col-heading'>New Card</p>
-        <div id='button-row' class='button-row'>
-            <button id='select_text' data-form='text-card-create' class='col-butt '>Text</button>
-            <button id='select_figure'data-form='figure-card-create'class='col-butt '>Figure</button>
+        <div class='col-container'>
+            <div id='button-row' class='button-row'>
+                <button id='select_text' data-form='text-card-create' class='col-butt '>Text</button>
+                <button id='select_figure'data-form='figure-card-create'class='col-butt '>Figure</button>
+            </div>
+            <form id='text-card-create' action="" method='POST' class='col-form col-item dn'><p>THIS IS THE TEXT FORM</p></form>
+            <form id='figure-card-create' action="" method='POST' class='col-form col-item dn'><p>THIS IS THE FIGURE FORM</p></form>
         </div>
-        <form id='text-card-create' action="" method='POST' class='col-form dn'><p>THIS IS THE TEXT FORM</p></form>
-        <form id='figure-card-create' action="" method='POST' class='col-form dn'><p>THIS IS THE FIGURE FORM</p></form>
-
     </div>
 </main>
 
