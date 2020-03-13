@@ -7,9 +7,9 @@
     --Glow: rgb(252, 255, 101);
     --GlowBlue: rgb(46, 112, 255);
     --stroke-green: rgb(37, 51, 56);
-    --background: rgba(255, 255, 250, 1);
+    --background: rgb(209, 214, 207);
     --background2: rgba(255, 255, 250, 0.8);
-    --background3: rgba(173, 173, 171, 0.8);
+    --background3: rgba(19, 36, 51, 0.753);
     --title-font: 'Righteous', cursive;
     --title-font2: 'Fredoka One', cursive;;
     --normal: 'Roboto Mono', monospace;
@@ -215,5 +215,29 @@ img {
 .col-form {
     background-color: var(--background2);
     color: var(--Gray);
+
+}
+
+
+@media only screen and (max-width: 600px){
+    .container {
+        width: 95%;
+        margin: 0 auto;
+        margin-top: 10px;
+        min-width: 300px;
+    }
+    .main {
+        display: flex;
+        width:100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .mid {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    .col {
+        width: 100%;
+    }
 
 }
