@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
@@ -9,7 +8,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', flashcard_views.homepage, name='home' ),
     path('api/', include('flashcards.urls')),
-    path('new_card/', flashcard_views.new_card, name='new_card'),
+    path('new_text_card/', flashcard_views.new_text_card, name='new_text_card'),
+    path('new_figure_card/', flashcard_views.new_figure_card, name='new_figure_card'),
+    path('take_quiz/<int:pk>', flashcard_views.take_quiz, name='take_quiz'),
     path('accounts/', include('registration.backends.default.urls')),
 ]
 

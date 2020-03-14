@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework import viewsets
 from .models import Card, FigureCard, TextCard, Deck
 from .forms import FigureCardForm, TextCardForm
@@ -35,32 +35,36 @@ class DeckView(viewsets.ModelViewSet):
 def homepage(request):
     cards = Card.objects.all()
     decks = Deck.objects.all()
-    f_form = FigureCardForm()
-    t_form = TextCardForm()
-    return render(request, 'flashcards/index.html', {'cards': cards, 'decks': decks, 'f_form': f_form, 't_form': t_form})
+    return render(request, 'flashcards/index.html', {'cards': cards, 'decks': decks})
 
-@csrf_exempt
-def new_card(request):
-    """
-    Create new card
-    """
-    if request.type == 'text' and request.method == 'POST':
-        data = JSONParser().parse(request)
-        serializer = TextCardSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data, status=201)
-        return JsonResponse(serializer.errors, status=400)
-    elif request.type == 'figure' and request.method == 'POST':
-        data = JSONParser().parse(request)
-        serializer = FigureCardSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data, status=201)
-        return JsonResponse(serializer.errors, status=400)
+
+def new_text_card(request):
+    if request.method == "POST":
+        form = TextCardForm(request.POST)
+        if form.is_valid():
+            text = form.save(commit=False)
+            text.user = request.user
+            text.save()
+            return redirect('home')
     else:
-        return 
+        form = TextCardForm()
+    return render(request, 'flashcards/new_text_card.html', { 'form': form })
 
+def new_figure_card(request):
+    if request.method == "POST":
+        form = FigureCardForm(request.POST)
+        if form.is_valid():
+            fig = form.save(commit=False)
+            fig.user = request.user
+            fig.save()
+            return redirect('home')
+    else: 
+        form = FigureCardForm()
+    return render(request, 'flashcards/new_figure_card.html', { 'form': form })
+
+def take_quiz(request, pk):
+    deck = Deck.objects.get(pk=pk)
+    return render(request, 'flashcards/take_quiz.html', {'deck': deck})
 
 # @require_POST #POST OR WHATEVER YOURE USING
 # @csrf_exempt #IF YOU DONT WANT A CSRF TOKEN

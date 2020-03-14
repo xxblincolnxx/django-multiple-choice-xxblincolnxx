@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+<script src="{% static 'js/home.js' %}" defer></script>
+{% endblock %}
+{% block content %}
+<header class='form-head'>
+  <a href="{% url 'home' %}" class='title alt'>FLASH CARDS</a>
+</header>
+<body class='form-background'>
+  <div class='container'>
+  <form class='col-form' action="" method='POST'>
+    {% csrf_token %}
+    {{form.as_table}}
+    <button class='form-butt' type='submit'> create </button>
+  </form>
+  </div>
+</body>
+{% endblock %}
