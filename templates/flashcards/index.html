@@ -4,6 +4,7 @@
 <script src="{% static 'js/home.js' %}" defer></script>
 {% endblock %}
 {% block content %}
+<body class='container'>
 <div class='shadow'>
 <header class='header'>
     <p class='title'>FLASH CARDS</p>
@@ -37,8 +38,10 @@
             {% endif %}
             {% for deck in decks %}
             <div id={{deck.pk}} class="col-item">
-                <p class='prev1'>{{deck.title}}</p>
-                <p class='prev2'>{{deck.subject}}</p>
+                <p class='prev1'>{{deck.name}}</p>
+                <p class='prev2'>{{deck.text_cards.count}} text cards</p>
+                <p class='prev2'>{{deck.figure_cards.count}} figure cards</p>
+                <a class='form-butt' href="{% url 'take_quiz' deck.pk %}" >Take Quiz!</a>
             </div>
             {% endfor %}
         </div>
@@ -46,22 +49,12 @@
     <div class='col'>
         <p data-stuff='col3'class='col-heading'>New Card</p>
         <div id='col3' class='col-container dn'>
-            <div id='button-row' class='button-row'>
-                <button id='select_text' data-form='text-card-create' class='col-butt '>Text</button>
-                <button id='select_figure'data-form='figure-card-create'class='col-butt '>Figure</button>
+            <div id='button-row' class='col-item dflx'>
+                <a href="{% url 'new_text_card' %}" id='select_text' data-form='text-card-create' class='form-butt '>Text</a>
+                <a href="{% url 'new_figure_card' %}" id='select_figure'data-form='figure-card-create'class='form-butt'>Figure</a>
             </div>
-            <form id='text-card-create' action="" method='POST' class='col-form col-item dn'>
-                {% csrf_token %}
-                {{t_form.as_table}}
-                <button type='submit' class='form-butt'>CREATE</button>
-            </form>
-            <form id='figure-card-create' action="" method='POST' class='col-form col-item dn'>
-                {% csrf_token %}
-                {{f_form.as_table}}
-            <button type='submit' class='form-butt'>CREATE</button>
-            </form>
         </div>
     </div>
 </main>
-
+</body>
 {% endblock %}

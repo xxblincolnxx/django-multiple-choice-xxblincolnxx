@@ -52,9 +52,15 @@ img {
     margin-left: 10px;
     font-family: var(--title-font2);
     font-size: 4rem;
+    text-decoration: none;
     padding: 20px;
     color: var(--background2);
     text-shadow: 0px 0px 5px var(--Topaz),0px 0px 20px var(--Glow);
+}
+
+.alt {
+    padding: 0;
+    font-size: 3rem;
 }
 
 .sub-title {
@@ -175,11 +181,13 @@ img {
 .prev1 {
     font-weight: bold;
     text-decoration: underline;
+    margin: 5px;
     cursor: pointer;
 }
 
 .prev2 {
     cursor: pointer;
+    margin: 5px;
 }
 
 .col-butt {
@@ -208,9 +216,17 @@ img {
     justify-content: space-between;
 }
 
+.form-background {
+    background-color: var(--stroke-green);
+    width: 100%;
+}
+
 .col-form {
-    background-color: var(--background2);
-    color: var(--Gray);
+    min-width: 600px;
+    padding: 20px;
+    margin: 20px auto;
+    background-color: var(--Gray);
+    color: var(--background2);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -218,27 +234,30 @@ img {
 }
 
 .col-form label{
-    width: 35%;
+    width: 15%;
     font-weight: bold;
     font-size: .8rem;
     text-align: right;
+    font-family: var(--normal);
 }
 
-.col-form input, textarea {
-    width: 64%;
+.col-form input, textarea, select {
+    width: 84%;
     padding: 5px;
     margin: 1px;
 }
 
 .form-butt {
-    width: 100%;
-    padding: 5px;
+    width: 50%;
+    padding: 3px;
     margin: 3px;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: 5px;
     font-family: var(--normal);
     font-weight: bold;
-    font-size: 1rem;
+    font-size: .8rem;
+    text-decoration: none;
+    text-align: center;
     color: var(--background2);
     background-color: var(--stroke-green);
     border-radius: 5px;
@@ -248,6 +267,11 @@ img {
     box-shadow: 0px 0px 3px var(--Topaz),0px 0px 10px var(--Glow);
     background-color:var(--background2);
     color: var(--stroke-green)
+}
+
+.form-head {
+    background-color: var(--background3);
+    padding: 10px;
 }
 
 @media only screen and (max-width: 800px){
@@ -282,4 +306,10 @@ img {
 
 .dn {
     display: none;
+}
+.dflx {
+    display: flex;
+}
+a {
+    text-decoration: none;
 }
