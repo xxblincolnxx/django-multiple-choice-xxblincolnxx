@@ -53,17 +53,15 @@ function showColumn () {
   }
 }
 // ---------------------FORM SUBMITTERS------------------
+
 function formListener (form) {
   form.addEventListener('submit', function (event) {
-    console.log(event.target.id)
     event.preventDefault()
     if (form.id === 'text-card-create') {
-      fetch('http://localhost:8000/api/text-card/', {
+      fetch('new_card/', {
         method: 'POST',
-        headers: {
-          contentType: 'application/json'
-        },
         body: JSON.stringify({
+          type: 'text',
           title: event.target.id_title.value,
           subject: event.target.id_subject.value,
           question: event.target.id_question.value,
@@ -76,12 +74,10 @@ function formListener (form) {
         })
     }
     if (form.id === 'figure-card-create') {
-      fetch('http://localhost:8000/api/figure-card/', {
+      fetch('new_card/', {
         method: 'POST',
-        headers: {
-          contentType: 'application/json'
-        },
         body: JSON.stringify({
+          type: 'text',
           title: event.target.id_title.value,
           subject: event.target.id_subject.value,
           raw_image: event.target.id_raw_image.value,
@@ -95,6 +91,57 @@ function formListener (form) {
     }
   })
 }
+
+// function formListener (form) {
+//   form.addEventListener('submit', function (event) {
+//     console.log(event.target.id)
+//     event.preventDefault()
+//     if (form.id === 'text-card-create') {
+//       fetch('/api/text-card/', {
+//         method: 'POST',
+//         mode: 'no-cors',
+//         cache: 'no-cache',
+//         credentials: 'same-origin',
+//         headers: {
+//           contentType: 'application/json',
+//           requestContent: 'json'
+//         },
+//         body: {
+//           title: event.target.id_title.value,
+//           subject: event.target.id_subject.value,
+//           question: event.target.id_question.value,
+//           answer: event.target.id_answer.value
+//         }
+//       })
+//         .then(res => res.json())
+//         .then(json => {
+//           location.reload()
+//         })
+//     }
+//     if (form.id === 'figure-card-create') {
+//       fetch('/api/figure-card/', {
+//         method: 'POST',
+//         mode: 'no-cors',
+//         cache: 'no-cache',
+//         credentials: 'same-origin',
+//         headers: {
+//           contentType: 'application/json',
+//           requestContent: 'json'
+//         },
+//         body: JSON.stringify({
+//           title: event.target.id_title.value,
+//           subject: event.target.id_subject.value,
+//           raw_image: event.target.id_raw_image.value,
+//           answer: event.target.id_answer.value
+//         })
+//       })
+//         .then(res => res.json())
+//         .then(json => {
+//           location.reload()
+//         })
+//     }
+//   })
+// }
 
 // ----------------------RUN PAGE---------------------
 function pageRun () {

@@ -3,11 +3,12 @@ from rest_framework import viewsets
 from .models import Card, FigureCard, TextCard, Deck
 from .forms import FigureCardForm, TextCardForm
 from .serializers import CardSerializer, FigureCardSerializer, TextCardSerializer, DeckSerializer
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 import json
-
 
 class CardView(viewsets.ModelViewSet):
     """
@@ -31,7 +32,6 @@ class DeckView(viewsets.ModelViewSet):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
 
-
 def homepage(request):
     cards = Card.objects.all()
     decks = Deck.objects.all()
@@ -39,7 +39,27 @@ def homepage(request):
     t_form = TextCardForm()
     return render(request, 'flashcards/index.html', {'cards': cards, 'decks': decks, 'f_form': f_form, 't_form': t_form})
 
-
+@csrf_exempt
+def new_card(request):
+    """
+    Create new card
+    """
+    if request.type == 'text' and request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = TextCardSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)
+    elif request.type == 'figure' and request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = FigureCardSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)
+    else:
+        return 
 
 
 # @require_POST #POST OR WHATEVER YOURE USING

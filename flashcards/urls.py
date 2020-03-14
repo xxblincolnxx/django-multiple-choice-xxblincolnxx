@@ -11,4 +11,5 @@ router.register('deck', views.DeckView )
 
 urlpatterns = [
    path('', include(router.urls)),
+   
 ]

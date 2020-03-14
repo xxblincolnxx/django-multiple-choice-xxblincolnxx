@@ -9,8 +9,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', flashcard_views.homepage, name='home' ),
     path('api/', include('flashcards.urls')),
+    path('new_card/', flashcard_views.new_card, name='new_card'),
     path('accounts/', include('registration.backends.default.urls')),
-    path('auth/', include('authapp.urls'))
 ]
 
 if settings.DEBUG:
