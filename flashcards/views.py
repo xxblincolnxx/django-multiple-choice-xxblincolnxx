@@ -3,11 +3,11 @@ from rest_framework import viewsets
 from .models import Card, FigureCard, TextCard, Deck
 from .forms import FigureCardForm, TextCardForm
 from .serializers import CardSerializer, FigureCardSerializer, TextCardSerializer, DeckSerializer
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_exempt
 import json
 
 class CardView(viewsets.ModelViewSet):
@@ -32,9 +32,10 @@ class DeckView(viewsets.ModelViewSet):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
 
+@login_required
 def homepage(request):
-    cards = Card.objects.all()
-    decks = Deck.objects.all()
+    cards = Card.objects.all().order_by('id').reverse()[:4]
+    decks = Deck.objects.all().order_by('id').reverse()[:2]
     return render(request, 'flashcards/index.html', {'cards': cards, 'decks': decks})
 
 
@@ -62,29 +63,44 @@ def new_figure_card(request):
         form = FigureCardForm()
     return render(request, 'flashcards/new_figure_card.html', { 'form': form })
 
+def view_decks (request):
+    decks = Deck.objects.all()
+    
+    return render(request, 'flashcards/view_decks.html', {'decks': decks })
+
+@csrf_exempt
+@require_POST
+def new_deck(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = DeckSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status="ok")
+        return JsonResponse(serializer.errors, status=400)    
+
+
+
+
 def take_quiz(request, pk):
     deck = Deck.objects.get(pk=pk)
     return render(request, 'flashcards/take_quiz.html', {'deck': deck})
 
-# @require_POST #POST OR WHATEVER YOURE USING
-# @csrf_exempt #IF YOU DONT WANT A CSRF TOKEN
-# def json_response_example(request):
+# USE THIS AS TEMPLATE:
+# @csrf_exempt
+# def snippet_list(request):
 #     """
-#     used to handle requests for API hits n such
+#     List all code snippets, or create a new snippet.
 #     """
-#     #decode request body
-#     data = json.loads(request.body.decode("utf-8"))
-#     #find the client
-#     client_pk = data.get('clientId')
-#     if client_pk is None:
-#         return JsonResponse({"status": "error", "message": "clientID is required"})
-    
-#     client = request.user.clients.filter(pk=client_pk).first()
-    
-#     #first, check and make sure theres not an open work interval for this user
-#     #if no open interval
-#         #create a new work interval for user
-#     #else
-#         #give warning to the user
+#     if request.method == 'GET':
+#         snippets = Snippet.objects.all()
+#         serializer = SnippetSerializer(snippets, many=True)
+#         return JsonResponse(serializer.data, safe=False)
 
-#     return JsonResponse({"request_data": data})
+#     elif request.method == 'POST':
+#         data = JSONParser().parse(request)
+#         serializer = SnippetSerializer(data=data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return JsonResponse(serializer.data, status=201)
+#         return JsonResponse(serializer.errors, status=400)

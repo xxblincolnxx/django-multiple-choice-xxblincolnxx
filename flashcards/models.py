@@ -6,17 +6,27 @@ from model_utils.managers import InheritanceManager
 
 class Deck(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     # figure_cards = models.ManyToManyField(FigureCard, related_name='decks')
     # text_cards = models.ManyToManyField(TextCard, related_name='decks')
 
     def __str__(self):
         return f'{self.name}'
 
+    @property
+    def all_cards(self):
+        allcards = self.text_cards.all()
+        figurecards = self.figure_cards.all()
+        allcards.update(figurecards).order_by('created_at')
+        return allcards
+        
+
 
 class Card(models.Model):
     title = models.CharField(max_length=100, blank=True, null=True)
     answer = models.CharField(max_length=100, blank=True, null=True)
     subject = models.CharField(max_length=100, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     objects = InheritanceManager()
 
     @property

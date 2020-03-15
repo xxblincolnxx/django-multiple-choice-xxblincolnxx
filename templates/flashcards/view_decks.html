@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+<script src="{% static 'js/deck.js' %}" defer></script>
+{% endblock %}
+{% block content %}
+<header class='form-head'>
+    <a href="{% url 'home' %}" class='title alt'>FLASH CARDS</a>
+</header>
+<body class='form-background'>
+<div class='deck-contain'>
+  <aside class='left-aside'>
+    {% for deck in decks %}
+      <div class='deck-item'>
+        <p>{{ deck.name }}</p>
+        <p>Text Cards:</p>
+        {% for tcard in deck.text_cards %}
+        <p id='{{tcard.pk}}' class='cardlink'>{{tcard.title}} {{tcard.subject}}</p>
+        {% endfor %}
+        <p>Figure Cards:</p>
+        {% for fcard in deck.figure_cards %}
+        <p id='{{fcard.pk}}'class='cardlink'>{{fcard.title}} {{fcard.subject}}</p>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+  </aside>
+  <main class='eightyfive'>
+  <div class='deck-hider'>
+    <p id='newdeckformSH' data-showhide='deckcreate' >Create New Deck</p>
+    <form id='deckcreate' method='POST' class='col-form dn'>
+      {% csrf_token %}
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="name of deck">
+      <button class='col-butt' id='create-deck' type='submit'> create deck</button>
+    </form>
+  </div>
+  </main>
+</div>
+
+</body>
+{% endblock %}

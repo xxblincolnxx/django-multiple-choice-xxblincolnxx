@@ -12,14 +12,14 @@
 </header>
 <nav class='nav'>
     <ul class='nav-list'>
-        <li class='nav-item'><a href="">Quiz</a></li>
-        <li class='nav-item'><a href="">New Deck</a></li>
+        <li class='nav-item'><a href="">Take Quiz</a></li>
+        <li class='nav-item'><a href="{% url 'view_decks' %}">View Decks</a></li>
     </ul>
 </nav>
 </div>
 <main class='main row'>
     <div class='col'>
-        <p data-stuff='col1' class='col-heading'>Recently Added</p>
+        <p data-stuff='col1' class='col-heading'>Recent Cards</p>
         <div id='col1' class='col-container dn'>
             {% for card in cards %}
             <div id={{card.pk}} class="col-item">
@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class='col mid'>
-        <p data-stuff='col2' class='col-heading'>My Decks</p>
+        <p data-stuff='col2' class='col-heading'>Recent Decks</p>
         <div id='col2' class='col-container dn'>
             {% if decks.count == 0 %}
             <p class='col-item'>You have no decks!</p>

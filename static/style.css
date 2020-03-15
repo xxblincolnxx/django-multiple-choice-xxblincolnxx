@@ -25,7 +25,8 @@
 img {
 	max-width:100%;
 }
-
+/* --------------------- ^ globals above ^-------------------- */
+/* ---------------------v general use and index v ------------ */
 .container {
     width: 70%;
     margin: 0 auto;
@@ -155,7 +156,7 @@ img {
     margin-bottom: 5px; */
     margin: 5px;
     cursor: pointer;
-    /* text-align: center; */
+    text-align: center;
 }
 
 .col-heading:hover {
@@ -223,7 +224,9 @@ img {
 
 .col-form {
     min-width: 600px;
+    max-width: 800px;
     padding: 20px;
+    border-radius: 5px;
     margin: 20px auto;
     background-color: var(--Gray);
     color: var(--background2);
@@ -272,8 +275,10 @@ img {
 .form-head {
     background-color: var(--background3);
     padding: 10px;
+    border-bottom: 1px solid var(--background2);
 }
 
+/* --------media queries------------------ */
 @media only screen and (max-width: 800px){
     .container {
         width: 95%;
@@ -302,8 +307,44 @@ img {
         width: 87%;
     }
 }
+/* --------Specific to view decks------ */
+.left-aside {
+    width: 15%;
+    min-height: 1000px;
+    background-color: var(--background3);
+    display: flex;
+    flex-wrap: wrap;
+    border-right: 1px solid var(--background2)
+}
 
+.eightyfive {
+    width:85%;
+    display:flex;
+    flex-wrap: wrap;
+}
 
+.deck-contain {
+    width: 100%;
+    display: flex;
+    justify-items: flex-start;
+    align-items: flex-start;
+}
+
+.deck-hider {
+    background-color: var(--background2);
+    font-family: var(--normal);
+    font-size: 1rem;
+    color: var(--Gray);
+    width: 100%;
+    padding: 3px;
+}
+
+.deck-hider:hover{
+    font-weight: bold;
+    box-shadow: 0px 0px 3px var(--Topaz),0px 0px 10px var(--Glow);
+}
+
+/* --------OVERRIDER CLASSES----------- */
 .dn {
     display: none;
 }
@@ -313,3 +354,7 @@ img {
 a {
     text-decoration: none;
 }
+
+.darktext {
+    color: var(--background3)
+} 
