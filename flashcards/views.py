@@ -65,7 +65,7 @@ def new_figure_card(request):
 
 def view_decks (request):
     decks = Deck.objects.all()
-    
+
     return render(request, 'flashcards/view_decks.html', {'decks': decks })
 
 @csrf_exempt
@@ -80,6 +80,7 @@ def new_deck(request):
         return JsonResponse(serializer.errors, status=400)    
 
 
+def show_cards(request, pk)
 
 
 def take_quiz(request, pk):

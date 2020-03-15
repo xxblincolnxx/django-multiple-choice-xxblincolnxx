@@ -13,6 +13,7 @@ urlpatterns = [
     path('view_decks/', flashcard_views.view_decks, name='view_decks'),
     path('view_decks/new/', flashcard_views.new_deck, name='new_deck'),
     path('take_quiz/<int:pk>', flashcard_views.take_quiz, name='take_quiz'),
+    path('view_decks/show_cards/<int:pk>', flashcard_views.show_cards, name='show_cards'),
     path('accounts/', include('registration.backends.default.urls')),
 ]
 

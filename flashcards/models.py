@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from users.models import User
 from PIL import Image
-from model_utils.managers import InheritanceManager
+from model_utils.managers import InheritanceManager, JoinManager
 
 class Deck(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
@@ -15,10 +15,16 @@ class Deck(models.Model):
 
     @property
     def all_cards(self):
-        allcards = self.text_cards.all()
-        figurecards = self.figure_cards.all()
-        allcards.update(figurecards).order_by('created_at')
-        return allcards
+        cards = self.cards.all()
+        return cards
+
+    # @property
+    # def all_cards(self):
+    #     textcards = self.text_cards.all()
+    #     figurecards = self.figure_cards.all()
+    #     allcards = textcards.join(figurecards)
+    #     allcards=allcards.order_by('pk')
+    #     return allcards
         
 
 
@@ -27,6 +33,7 @@ class Card(models.Model):
     answer = models.CharField(max_length=100, blank=True, null=True)
     subject = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    decks = models.ManyToManyField(Deck, related_name='cards')
     objects = InheritanceManager()
 
     @property
@@ -47,7 +54,7 @@ class FigureCard(Card):
     raw_image = models.FileField(
         upload_to='images', null=True, verbose_name=None)
     card_type = 'Figure'
-    decks = models.ManyToManyField(Deck, related_name='figure_cards')
+    
     
     def __str__(self):
         return f'{self.title}'
@@ -57,7 +64,6 @@ class FigureCard(Card):
 class TextCard(Card):
     question = models.TextField(blank=True, null=True)
     card_type = 'Text'
-    decks = models.ManyToManyField(Deck, related_name='text_cards')
 
     def __str__(self):
         return f'{self.title}'

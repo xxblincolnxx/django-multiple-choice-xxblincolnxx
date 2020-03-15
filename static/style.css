@@ -9,7 +9,7 @@
     --stroke-green: rgb(37, 51, 56);
     --background: rgb(209, 214, 207);
     --background2: rgba(255, 255, 250, 0.8);
-    --background3: rgba(19, 36, 51, 0.753);
+    --background3: rgba(19, 36, 51, 1);
     --title-font: 'Righteous', cursive;
     --title-font2: 'Fredoka One', cursive;;
     --normal: 'Roboto Mono', monospace;
@@ -309,21 +309,24 @@ img {
 }
 /* --------Specific to view decks------ */
 .left-aside {
-    width: 15%;
-    min-height: 1000px;
+    width: 25%;
+    /* min-height: 1000px; */
     background-color: var(--background3);
     display: flex;
     flex-wrap: wrap;
-    border-right: 1px solid var(--background2)
+    border-right: 1px solid var(--background2);
+    padding: 20px;
+    justify-content: flex-start;
 }
 
 .eightyfive {
-    width:85%;
+    width:75%;
     display:flex;
     flex-wrap: wrap;
 }
 
 .deck-contain {
+    background: var(--background2);
     width: 100%;
     display: flex;
     justify-items: flex-start;
@@ -344,6 +347,35 @@ img {
     box-shadow: 0px 0px 3px var(--Topaz),0px 0px 10px var(--Glow);
 }
 
+.deck-item {
+   display: flex;
+   flex-wrap: wrap;
+   font-family: var(--normal);
+   align-items: flex-start;
+   font-size: .8rem
+}
+
+.deck-heading {
+    font-size: 1rem;
+    color: var(--background2)   
+}
+
+.deck-heading:hover {
+    font-weight: bold;
+    text-shadow: 0px 0px 3px var(--Topaz),0px 0px 10px var(--Glow); 
+}
+
+.deck-sub-heading {
+    color: var(--stroke-green);
+    font-weight: bold;
+    font-size: .9rem;   
+}
+
+.cardlink {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 /* --------OVERRIDER CLASSES----------- */
 .dn {
     display: none;
@@ -358,3 +390,15 @@ a {
 .darktext {
     color: var(--background3)
 } 
+
+.darkshadowbox {
+    margin-top: 5px;
+    box-shadow: 0px 0px 3px var(--Lime),-3px 3px 4px var(--Black);
+    padding: 2px;
+    border-radius: 5px;
+    display: flex; 
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+
+}

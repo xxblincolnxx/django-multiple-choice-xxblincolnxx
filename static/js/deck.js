@@ -48,5 +48,23 @@ function showHide (buttonID) {
   })
 }
 
+function setupDeckButtons () {
+  const buttons = dqsA('.deck-item')
+  for (const button in buttons) {
+    button.addEventListener('click', function (event) {
+      const url = event.target.dataset.url
+      fetch(url)
+        .then(res => res.json())
+        .then(json => {
+          showDeckCards(json.cards)
+        })
+    })
+  }
+}
+
+function showDeckCards (cardset) {
+}
+
+setupDeckButtons()
 showHide('#newdeckformSH')
 newDeckForm()
