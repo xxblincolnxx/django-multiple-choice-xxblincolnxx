@@ -11,13 +11,14 @@
 <div class='deck-contain'>
   <aside class='left-aside'>
     {% for deck in decks %}
-      <div id="{{deck.id}}" data-url="{$ url 'show_cards' deck.id $}" class='deck-item'>
+      <div class='deck-item'>
         <p class='deck-heading'>{{ deck.name }}</p>
+        <button id={{deck.pk}} data-url="{% url 'show_cards' deck.pk %}" class='form-butt shwcards'>SHOW CARDS</button>
         <div class='col-item'>
           <p class='deck-sub-heading'>Cards in this deck:</p>
           {% for card in deck.all_cards %}
-          <div class='darkshadowbox'>
-            <p id='{{card.pk}}' class='cardlink'>{{card.title}}</p> 
+          <div id='{{card.pk}}' class='darkshadowbox'>
+            <p  class='cardlink'>{{card.title}}</p> 
             <p class='card-info'> {{card.subject}} created at {{card.created_at}}</p>
           </div>
             {% endfor %}

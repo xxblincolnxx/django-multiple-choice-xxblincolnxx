@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http import JsonResponse
-from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_POST, require_GET
 import json
 
 class CardView(viewsets.ModelViewSet):
@@ -65,7 +65,6 @@ def new_figure_card(request):
 
 def view_decks (request):
     decks = Deck.objects.all()
-
     return render(request, 'flashcards/view_decks.html', {'decks': decks })
 
 @csrf_exempt
@@ -80,7 +79,19 @@ def new_deck(request):
         return JsonResponse(serializer.errors, status=400)    
 
 
-def show_cards(request, pk)
+@csrf_exempt
+@require_GET
+def show_cards(request, pk):
+    if request.method == 'GET':
+        data = JSONParser().parse(request)
+        deck = Deck.objects.get(pk=data.pk)
+        # fig = FigureCard.objects.all()
+        # text = TextCard.objects.all()
+        serializer = DeckSerializer(deck)
+        # serial_fig = FigureCardSerializer(fig)
+        # serial_text = TextCardSerializer(text)
+        return JsonResonse(serializer.data)
+    
 
 
 def take_quiz(request, pk):

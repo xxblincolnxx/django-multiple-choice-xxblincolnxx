@@ -49,21 +49,22 @@ function showHide (buttonID) {
 }
 
 function setupDeckButtons () {
-  const buttons = dqsA('.deck-item')
-  for (const button in buttons) {
+  const buttons = dqsA('.shwcards')
+  for (const button of buttons) {
     button.addEventListener('click', function (event) {
       const url = event.target.dataset.url
       fetch(url)
         .then(res => res.json())
         .then(json => {
-          showDeckCards(json.cards)
+          console.log('yay')
+          console.log(json.data.cards)
         })
     })
   }
 }
 
-function showDeckCards (cardset) {
-}
+// function showDeckCards (cardset) {
+// }
 
 setupDeckButtons()
 showHide('#newdeckformSH')

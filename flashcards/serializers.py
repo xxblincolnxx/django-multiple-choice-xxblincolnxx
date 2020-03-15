@@ -6,17 +6,21 @@ class CardSerializer(serializers.ModelSerializer):
         model = Card
         fields = '__all__'
 
+class DeckSerializer(serializers.ModelSerializer):
+    cards = CardSerializer(many=True)
+    class Meta:
+        model = Deck
+        fields = '__all__'
+
 class FigureCardSerializer(serializers.ModelSerializer):
+    decks = DeckSerializer(many=True)
     class Meta:
         model = FigureCard
         fields = '__all__'
 
 class TextCardSerializer(serializers.ModelSerializer):
+    decks = DeckSerializer(many=True)
     class Meta:
         model = TextCard
         fields = '__all__'
 
-class DeckSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Deck
-        fields = '__all__'

@@ -37,7 +37,7 @@
             <p class='col-item'>You have no decks!</p>
             {% endif %}
             {% for deck in decks %}
-            <div id={{deck.pk}} class="col-item">
+            <div id="{{deck.pk}}" class="col-item">
                 <p class='prev1'>{{deck.name}}</p>
                 <p class='prev2'>{{deck.text_cards.count}} text cards</p>
                 <p class='prev2'>{{deck.figure_cards.count}} figure cards</p>
