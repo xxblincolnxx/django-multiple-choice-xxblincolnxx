@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from .models import Card, FigureCard, TextCard, Deck
 from .forms import FigureCardForm, TextCardForm
 from .serializers import CardSerializer, FigureCardSerializer, TextCardSerializer, DeckSerializer
+from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
@@ -14,7 +15,8 @@ class CardView(viewsets.ModelViewSet):
     """
     Handles routing for POST, PATCH, GET, DELETE, etc.
     """
-    queryset = Card.objects.select_subclasses()
+    # queryset = Card.objects.select_subclasses()
+    queryset = Card.objects.all()
     serializer_class = CardSerializer
 
 
@@ -80,17 +82,12 @@ def new_deck(request):
 
 
 @csrf_exempt
-@require_GET
+@api_view(['GET'])
 def show_cards(request, pk):
     if request.method == 'GET':
-        data = JSONParser().parse(request)
-        deck = Deck.objects.get(pk=data.pk)
-        # fig = FigureCard.objects.all()
-        # text = TextCard.objects.all()
-        serializer = DeckSerializer(deck)
-        # serial_fig = FigureCardSerializer(fig)
-        # serial_text = TextCardSerializer(text)
-        return JsonResonse(serializer.data)
+        deck= Deck.objects.get(pk=pk)
+        serializer= DeckSerializer(deck)
+    return JsonResponse(serializer.data)
     
 
 

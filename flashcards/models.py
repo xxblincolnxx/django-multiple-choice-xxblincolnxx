@@ -34,7 +34,7 @@ class Card(models.Model):
     subject = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     decks = models.ManyToManyField(Deck, related_name='cards')
-    objects = InheritanceManager()
+    # objects = InheritanceManager()
 
     @property
     def type(self):

@@ -53,11 +53,23 @@ function setupDeckButtons () {
   for (const button of buttons) {
     button.addEventListener('click', function (event) {
       const url = event.target.dataset.url
+      const display = dqs('#card-display')
       fetch(url)
         .then(res => res.json())
         .then(json => {
-          console.log('yay')
-          console.log(json.data.cards)
+          display.innerHTML = ''
+          for (const card of json.cards) {
+            const newDiv = document.createElement('div')
+            newDiv.classList.add('card')
+            newDiv.id = card.id
+
+            const title = document.createElement('p')
+            title.innerText = card.title
+            title.classList.add('card-title')
+
+            newDiv.appendChild(title)
+            display.appendChild(newDiv)
+          }
         })
     })
   }
@@ -69,3 +81,17 @@ function setupDeckButtons () {
 setupDeckButtons()
 showHide('#newdeckformSH')
 newDeckForm()
+
+// const data = {
+//  id: 1,
+//   cards: [{
+//  id: 2,
+//     title: 'Danger',
+//     answer: 'Killer Rabbit',
+//     subject: 'Lethal Lethalities',
+//     created_at: '2020-03-15T17:05:26.788092Z',
+// decks: [1]
+//  }, { id: 9, title: 'French Sayings', answer: 'hamster, elderberries', subject: 'Oooo that smell', created_at: '2020-03-15T17:05:26.788092Z', decks: [1] }, { id: 5, title: 'Old man on the bridge', answer: 'African or European?', subject: 'Swallows', created_at: '2020-03-15T17:05:26.788092Z', decks: [1] }, { id: 3, title: 'Old man on the bridge', answer: 'Blue, no yeeeellllloooooowwwwww', subject: 'Philosophy', created_at: '2020-03-15T17:05:26.788092Z', decks: [1] }],
+// name: 'Monty Python Quiz',
+// created_at: '2020-03-15T17:05:26.799462Z'
+//  }
