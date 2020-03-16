@@ -39,20 +39,21 @@
             {% for deck in decks %}
             <div id="{{deck.pk}}" class="col-item">
                 <p class='prev1'>{{deck.name}}</p>
-                <p class='prev2'>{{deck.text_cards.count}} text cards</p>
-                <p class='prev2'>{{deck.figure_cards.count}} figure cards</p>
+                <!-- <p class='prev2'>{{deck.text_cards.count}} text cards</p>
+                <p class='prev2'>{{deck.figure_cards.count}} figure cards</p> -->
                 <a class='form-butt' href="{% url 'take_quiz' deck.pk %}" >Take Quiz!</a>
             </div>
             {% endfor %}
         </div>
     </div>
     <div class='col'>
-        <p data-stuff='col3'class='col-heading'>New Card</p>
+        <p data-stuff='col3' class='col-heading'>New Card</p>
         <div id='col3' class='col-container dn'>
-            <div id='button-row' class='col-item dflx'>
-                <a href="{% url 'new_text_card' %}" id='select_text' data-form='text-card-create' class='form-butt '>Text</a>
-                <a href="{% url 'new_figure_card' %}" id='select_figure'data-form='figure-card-create'class='form-butt'>Figure</a>
-            </div>
+            <form class='col-form' action="" method='POST'>
+                {% csrf_token %}
+                {{form.as_table}}
+                <button class='form-butt' type='submit'> create </button>
+            </form>
         </div>
     </div>
 </main>

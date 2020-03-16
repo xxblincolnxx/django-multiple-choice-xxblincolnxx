@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from rest_framework import viewsets
-from .models import Card, FigureCard, TextCard, Deck
-from .forms import FigureCardForm, TextCardForm
-from .serializers import CardSerializer, FigureCardSerializer, TextCardSerializer, DeckSerializer
+from .models import Card, Deck
+from .forms import CardForm
+from .serializers import CardSerializer, DeckSerializer
 from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -20,16 +20,6 @@ class CardView(viewsets.ModelViewSet):
     serializer_class = CardSerializer
 
 
-class FigureCardView(viewsets.ModelViewSet):
-    queryset = FigureCard.objects.all()
-    serializer_class = FigureCardSerializer
-
-
-class TextCardView(viewsets.ModelViewSet):
-    queryset = TextCard.objects.all()
-    serializer_class = TextCardSerializer
-
-
 class DeckView(viewsets.ModelViewSet):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
@@ -38,32 +28,41 @@ class DeckView(viewsets.ModelViewSet):
 def homepage(request):
     cards = Card.objects.all().order_by('id').reverse()[:4]
     decks = Deck.objects.all().order_by('id').reverse()[:2]
-    return render(request, 'flashcards/index.html', {'cards': cards, 'decks': decks})
-
-
-def new_text_card(request):
     if request.method == "POST":
-        form = TextCardForm(request.POST)
+        form = CardForm(request.POST)
         if form.is_valid():
-            text = form.save(commit=False)
-            text.user = request.user
-            text.save()
+            card = form.save(commit=False)
+            card.user = request.user
+            card.save()
             return redirect('home')
     else:
-        form = TextCardForm()
-    return render(request, 'flashcards/new_text_card.html', { 'form': form })
+        form = CardForm()
+    return render(request, 'flashcards/index.html', {'cards': cards, 'decks': decks, 'form': form })
 
-def new_figure_card(request):
-    if request.method == "POST":
-        form = FigureCardForm(request.POST)
-        if form.is_valid():
-            fig = form.save(commit=False)
-            fig.user = request.user
-            fig.save()
-            return redirect('home')
-    else: 
-        form = FigureCardForm()
-    return render(request, 'flashcards/new_figure_card.html', { 'form': form })
+
+# def new_text_card(request):
+#     if request.method == "POST":
+#         form = TextCardForm(request.POST)
+#         if form.is_valid():
+#             text = form.save(commit=False)
+#             text.user = request.user
+#             text.save()
+#             return redirect('home')
+#     else:
+#         form = TextCardForm()
+#     return render(request, 'flashcards/new_text_card.html', { 'form': form })
+
+# def new_figure_card(request):
+#     if request.method == "POST":
+#         form = FigureCardForm(request.POST)
+#         if form.is_valid():
+#             fig = form.save(commit=False)
+#             fig.user = request.user
+#             fig.save()
+#             return redirect('home')
+#     else: 
+#         form = FigureCardForm()
+#     return render(request, 'flashcards/new_figure_card.html', { 'form': form })
 
 def view_decks (request):
     decks = Deck.objects.all()
