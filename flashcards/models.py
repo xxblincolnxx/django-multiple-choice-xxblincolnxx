@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from users.models import User
 from PIL import Image
-from image_cropping import ImageRatioField
+
 
 class Deck(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
@@ -23,9 +23,8 @@ class Card(models.Model):
     answer = models.CharField(max_length=100, blank=True, null=True)
     subject = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    decks = models.ManyToManyField(Deck, related_name='cards',blank=True, null=True )
+    decks = models.ManyToManyField(Deck, related_name='cards')
     figure_raw = models.ImageField(blank=True, null=True)
-    cropping = ImageRatioField('figure_raw', '200x400')
     question = models.TextField(blank=True, null=True)
 
 

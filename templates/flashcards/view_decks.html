@@ -33,7 +33,7 @@
     <p id='newdeckformSH' data-showhide='deckcreate'>Create New Deck</p>
     <form id='deckcreate' method='POST' class='col-form  deck-form dn'>
       {% csrf_token %}
-      <input type="text" id="name" placeholder="enter the name of your new deck" required>
+      <input type="text" id="name" required>
       <button class='form-butt' id='create-deck' type='submit'>CREATE DECK</button>
     </form>
   </div>

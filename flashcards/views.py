@@ -19,7 +19,6 @@ class CardView(viewsets.ModelViewSet):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
 
-
 class DeckView(viewsets.ModelViewSet):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
@@ -38,7 +37,7 @@ def homepage(request):
         form = CardForm()
     
     cards = Card.objects.all().order_by('id').reverse()[:4]
-    decks = Deck.objects.all().order_by('id').reverse()[:2]
+    decks = Deck.objects.all().order_by('id').reverse()[:4]
     return render(request, 'flashcards/index.html', {'cards': cards, 'decks': decks, 'form': form })
 
 
@@ -78,7 +77,7 @@ def new_deck(request):
         serializer = DeckSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(serializer.data, status="ok")
+            return JsonResponse(serializer.data)
         return JsonResponse(serializer.errors, status=400)    
 
 

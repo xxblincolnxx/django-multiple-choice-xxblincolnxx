@@ -24,8 +24,6 @@ function newDeckForm () {
       method: 'POST',
       body: JSON.stringify({ name: dqs('#name').value })
     })
-      // .then(res => res.text())
-      // .then(text => console.log(text))
       .then(res => res.json())
       .then(json => {
         if (json.status === 'ok') {
@@ -88,7 +86,6 @@ function setupDeckButtons () {
             const answerbutton = document.createElement('button')
             answerbutton.innerText = 'SHOW ANSWER'
             answerbutton.classList.add('form-butt')
-            answerbutton.classList.add('card-butt')
             answerbutton.dataset.showhide = '#answer{card.id}'
             newDiv.appendChild(answerbutton)
 
