@@ -6,8 +6,6 @@ from PIL import Image
 class Deck(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    # figure_cards = models.ManyToManyField(FigureCard, related_name='decks')
-    # text_cards = models.ManyToManyField(TextCard, related_name='decks')
 
     def __str__(self):
         return f'{self.name}'
@@ -16,14 +14,6 @@ class Deck(models.Model):
     def all_cards(self):
         cards = self.cards.all()
         return cards
-
-    # @property
-    # def all_cards(self):
-    #     textcards = self.text_cards.all()
-    #     figurecards = self.figure_cards.all()
-    #     allcards = textcards.join(figurecards)
-    #     allcards=allcards.order_by('pk')
-    #     return allcards
         
 
 
@@ -33,7 +23,7 @@ class Card(models.Model):
     subject = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     decks = models.ManyToManyField(Deck, related_name='cards')
-    figure_raw = models.FileField(upload_to='images', blank=False, null=False)
+    figure_raw = models.ImageField(default='default.png', blank=True, null=True)
     question = models.TextField(blank=True, null=True)
 
 

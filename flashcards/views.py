@@ -24,19 +24,21 @@ class DeckView(viewsets.ModelViewSet):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
 
+@csrf_exempt
 @login_required
 def homepage(request):
-    cards = Card.objects.all().order_by('id').reverse()[:4]
-    decks = Deck.objects.all().order_by('id').reverse()[:2]
     if request.method == "POST":
         form = CardForm(request.POST)
         if form.is_valid():
-            card = form.save(commit=False)
-            card.user = request.user
-            card.save()
+            # thecard = form.save(commit=False)
+            # thecard.user = request.user
+            form.save()
             return redirect('home')
     else:
         form = CardForm()
+    
+    cards = Card.objects.all().order_by('id').reverse()[:4]
+    decks = Deck.objects.all().order_by('id').reverse()[:2]
     return render(request, 'flashcards/index.html', {'cards': cards, 'decks': decks, 'form': form })
 
 

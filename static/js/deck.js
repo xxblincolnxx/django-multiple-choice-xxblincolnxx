@@ -61,18 +61,52 @@ function setupDeckButtons () {
           for (const card of json.cards) {
             const newDiv = document.createElement('div')
             newDiv.classList.add('card')
+            newDiv.classList.add('darkshadowbox')
             newDiv.id = card.id
 
             const title = document.createElement('p')
             title.innerText = card.title
             title.classList.add('card-title')
-
             newDiv.appendChild(title)
+
+            if (card.figure_raw != null) {
+              const figure = document.createElement('img')
+              figure.src = card.figure_raw
+              figure.classList.add('card-fig')
+              newDiv.appendChild(figure)
+            }
+
+            const question = document.createElement('p')
+            question.innerText = card.question
+            question.classList.add('card-text')
+            newDiv.appendChild(question)
+
+            if (card.figure_raw != null) {
+              question.classList.add('no-figure')
+            }
+
+            const answerbutton = document.createElement('button')
+            answerbutton.innerText = 'SHOW ANSWER'
+            answerbutton.classList.add('form-butt')
+            answerbutton.dataset.showhide = '#answer{card.id}'
+            newDiv.appendChild(answerbutton)
+
+            const answer = document.createElement('p')
+            answer.innerText = card.answer
+            answer.classList.add('card-text')
+            answer.id = 'answer{card.id}'
+            newDiv.appendChild(answer)
+
             display.appendChild(newDiv)
           }
+          setupCardButtons()
         })
     })
   }
+}
+
+function setupCardButtons () {
+
 }
 
 // function showDeckCards (cardset) {
@@ -86,12 +120,29 @@ newDeckForm()
 //  id: 1,
 //   cards: [{
 //  id: 2,
-//     title: 'Danger',
-//     answer: 'Killer Rabbit',
-//     subject: 'Lethal Lethalities',
-//     created_at: '2020-03-15T17:05:26.788092Z',
-// decks: [1]
-//  }, { id: 9, title: 'French Sayings', answer: 'hamster, elderberries', subject: 'Oooo that smell', created_at: '2020-03-15T17:05:26.788092Z', decks: [1] }, { id: 5, title: 'Old man on the bridge', answer: 'African or European?', subject: 'Swallows', created_at: '2020-03-15T17:05:26.788092Z', decks: [1] }, { id: 3, title: 'Old man on the bridge', answer: 'Blue, no yeeeellllloooooowwwwww', subject: 'Philosophy', created_at: '2020-03-15T17:05:26.788092Z', decks: [1] }],
-// name: 'Monty Python Quiz',
-// created_at: '2020-03-15T17:05:26.799462Z'
+//  title: 'Danger',
+//  answer: 'Killer Rabbit',
+//  subject: 'Lethal Lethalities',
+//  created_at: '2020-03-15T17:05:26.788092Z',
+//  decks: [1]},{
+//  id: 9,
+//  title: 'French Sayings',
+//  answer: 'hamster, elderberries',
+//  subject: 'Oooo that smell',
+//  created_at: '2020-03-15T17:05:26.788092Z',
+//  decks: [1] }, {
+//  id: 5,
+//  title: 'Old man on the bridge',
+//  answer: 'African or European?',
+//  subject: 'Swallows',
+//  created_at: '2020-03-15T17:05:26.788092Z',
+//  decks: [1] }, {
+//  id: 3,
+//  title: 'Old man on the bridge',
+//  answer: 'Blue, no yeeeellllloooooowwwwww',
+//  subject: 'Philosophy',
+//  created_at: '2020-03-15T17:05:26.788092Z',
+//  decks: [1] }],
+//  name: 'Monty Python Quiz',
+//  created_at: '2020-03-15T17:05:26.799462Z'
 //  }

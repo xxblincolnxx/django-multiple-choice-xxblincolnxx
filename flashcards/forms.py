@@ -13,5 +13,5 @@ class CardForm(ModelForm):
             'question': _('Question'),
             'figure_raw':_('Image'),
             'answer': _('Answer'),
-            'decks': _('Associated Decks')
+            'decks': _('Decks')
         }

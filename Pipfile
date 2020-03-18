@@ -21,6 +21,8 @@ django-model-utils = "*"
 psycopg2 = "*"
 django-heroku = "*"
 gunicorn = "*"
+boto3 = "*"
+django-storages = "*"
 
 [requires]
 python_version = "3.8"

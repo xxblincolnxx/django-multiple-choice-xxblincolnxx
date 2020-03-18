@@ -42,7 +42,7 @@ img {
 
 .header {
     width: 100%;
-    background-color: var(--stroke-green);
+    background-color: var(--background3);
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     text-align: center;
@@ -77,7 +77,7 @@ img {
 .nav {
     display: flex;
     width: 100%;
-    background-color: var(--Gray);
+    background-color: var(--stroke-green);
     justify-content: space-between;
     color: var(--background2);
     border-top: 1px solid var(--background);
@@ -126,7 +126,7 @@ img {
     width: 33%;
     display: flex;
     flex-wrap: wrap;
-    background-color: var(--Gray);
+    background-color: var(--background3);
     padding: 10px;
     margin-top: 10px;
     border-radius: 5px;
@@ -244,19 +244,22 @@ img {
 
 .col-form input, textarea, select {
     width: 78%;
-    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
     border-radius: 5px;
-    border: 1px solid var(--stroke-green);
+    border: none;
     font-family: var(--normal);
     font-size: .7rem;
-    color: var(--Gray);
+    color: var(--background2);
     padding: 5px;
-    background-color: var(--background2)
+    background-color: var(--stroke-green);
+    text-shadow: 0px 0px 5px var(--Glow);
 }   
 
-.col-form input:hover, textarea:hover, select:hover {
+/* .col-form input:hover, textarea:hover, select:hover {
     box-shadow: 0px 0px 3px var(--Topaz),0px 0px 10px var(--Glow);
-}
+} */
 
 .form-butt {
     width: 50%;
@@ -350,7 +353,7 @@ img {
     font-size: 1rem;
     color: var(--Gray);
     width: 100%;
-    padding: 3px;
+    padding: 10px;
 }
 
 .deck-hider:hover{
@@ -365,11 +368,15 @@ img {
    align-items: flex-start;
    font-size: .8rem;
    cursor: pointer;
+   margin-bottom: 10px;
+   padding-top: 5px;
+   padding-bottom: 5px;
 }
 
 .deck-heading {
     font-size: 1rem;
-    color: var(--background2)   
+    color: var(--background2);
+    width: 100%;   
 }
 
 .deck-heading:hover {
@@ -383,15 +390,80 @@ img {
     font-size: .9rem;   
 }
 
+.deck-form {
+    padding: 10px;
+    background-color: var(--background3)
+}
+.deck-form label{
+    width: 5%;
+    color: var(--background2)
+}
+.deck-form input{
+    width: 90%;
+    color: var(--background2);
+    background-color: var(--stroke-green) 
+}
+
+.deck-form input:hover{
+    background-color: var(--background2);
+    color: var(--stroke-green);
+    box-shadow: 0px 0px 3px var(--Topaz),0px 0px 10px var(--Glow);
+}
+.deck-form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--background2);
+    opacity: .5;
+    text-transform: uppercase;
+    text-align: center;
+}
+  
+
 .cardlink {
+    width: 100%;
     font-weight: bold;
     text-decoration: underline;
 }
+.card-info {
+    width: 100%;
+}
+.deck-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px;
+}
+.card {
+    background-color: var(--background2);
+    font-family: var(--normal);
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    width: 200px;
+    height: 250px;
+    margin: 10px;
+}
+
+.card-display {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-title {
+    font-family: var(--normal);
+    font-weight: bold;
+}
 
 /* --------OVERRIDER CLASSES----------- */
-.dn {
-    display: none;
+.darkshadowbox {
+    margin-top: 5px;
+    box-shadow: 0px 0px 3px var(--Lime),-3px 3px 4px var(--Black);
+    /* padding: 2px; */
+    border-radius: 5px;
+    display: flex; 
+   
+    
 }
+
 .dflx {
     display: flex;
 }
@@ -403,14 +475,10 @@ a {
     color: var(--background3)
 } 
 
-.darkshadowbox {
-    margin-top: 5px;
-    box-shadow: 0px 0px 3px var(--Lime),-3px 3px 4px var(--Black);
-    padding: 2px;
-    border-radius: 5px;
-    display: flex; 
-    align-items: flex-start;
-    flex-wrap: wrap;
+.hoverglow:hover{
+    box-shadow: 0px 0px 3px var(--Topaz),0px 0px 10px var(--Glow);
+}
 
-
+.dn {
+    display: none;
 }

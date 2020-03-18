@@ -39,8 +39,6 @@
             {% for deck in decks %}
             <div id="{{deck.pk}}" class="col-item">
                 <p class='prev1'>{{deck.name}}</p>
-                <!-- <p class='prev2'>{{deck.text_cards.count}} text cards</p>
-                <p class='prev2'>{{deck.figure_cards.count}} figure cards</p> -->
                 <a class='form-butt' href="{% url 'take_quiz' deck.pk %}" >Take Quiz!</a>
             </div>
             {% endfor %}
@@ -52,7 +50,7 @@
             <form class='col-form' action="" method='POST'>
                 {% csrf_token %}
                 {{form.as_table}}
-                <button class='form-butt' type='submit'> create </button>
+                <button class='form-butt' type='Submit' value='Submit'>Submit</button>
             </form>
         </div>
     </div>
