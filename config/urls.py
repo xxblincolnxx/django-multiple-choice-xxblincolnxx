@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
 from flashcards import views as flashcard_views
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -13,7 +14,7 @@ urlpatterns = [
     path('take_quiz/<int:pk>', flashcard_views.take_quiz, name='take_quiz'),
     path('view_decks/show_cards/<int:pk>', flashcard_views.show_cards, name='show_cards'),
     path('accounts/', include('registration.backends.default.urls')),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar

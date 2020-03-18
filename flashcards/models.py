@@ -23,7 +23,7 @@ class Card(models.Model):
     subject = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     decks = models.ManyToManyField(Deck, related_name='cards')
-    figure_raw = models.ImageField(default='default.png', blank=True, null=True)
+    figure_raw = models.ImageField(blank=True, null=True)
     question = models.TextField(blank=True, null=True)
 
 

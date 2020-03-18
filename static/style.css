@@ -451,6 +451,12 @@ img {
 .card-title {
     font-family: var(--normal);
     font-weight: bold;
+    width: 100%;
+}
+
+.card-text {
+    font-size: .7rem;
+    width: 100%;
 }
 
 /* --------OVERRIDER CLASSES----------- */
