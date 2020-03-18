@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import FigureCard, TextCard, Deck
+from .models import Deck, Card
 
-admin.site.register(FigureCard)
-admin.site.register(TextCard)
+
 admin.site.register(Deck)
+admin.site.register(Card)

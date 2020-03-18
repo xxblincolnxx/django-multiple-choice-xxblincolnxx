@@ -17,9 +17,9 @@
         <div class='col-item'>
           <p class='deck-sub-heading'>Cards in this deck:</p>
           {% for card in deck.all_cards %}
-          <div id='{{card.pk}}' class='darkshadowbox'>
-            <p  class='cardlink'>{{card.title}}</p> 
-            <p class='card-info'> {{card.subject}} created at {{card.created_at}}</p>
+          <div id='{{card.pk}}' class='darkshadowbox deck-cards'>
+            <p class='cardlink'>{{card.title}}</p> 
+            <p class='card-info'>created {{card.created_at}}</p>
           </div>
             {% endfor %}
           
@@ -30,15 +30,14 @@
   </aside>
   <main class='eightyfive'>
   <div class='deck-hider'>
-    <p id='newdeckformSH' data-showhide='deckcreate' >Create New Deck</p>
-    <form id='deckcreate' method='POST' class='col-form dn'>
+    <p id='newdeckformSH' data-showhide='deckcreate'>Create New Deck</p>
+    <form id='deckcreate' method='POST' class='col-form  deck-form dn'>
       {% csrf_token %}
-      <label for="name">Name:</label>
-      <input type="text" id="name" placeholder="name of deck" required>
-      <button class='form-butt' id='create-deck' type='submit'> create deck</button>
+      <input type="text" id="name" placeholder="enter the name of your new deck" required>
+      <button class='form-butt' id='create-deck' type='submit'>CREATE DECK</button>
     </form>
   </div>
-  <div id='card-display'></div>
+  <div id='card-display' class='card-display'></div>
   </main>
 </div>
 

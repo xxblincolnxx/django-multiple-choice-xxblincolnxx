@@ -2,13 +2,10 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from users.models import User
 from PIL import Image
-from model_utils.managers import InheritanceManager, JoinManager
 
 class Deck(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    # figure_cards = models.ManyToManyField(FigureCard, related_name='decks')
-    # text_cards = models.ManyToManyField(TextCard, related_name='decks')
 
     def __str__(self):
         return f'{self.name}'
@@ -17,14 +14,6 @@ class Deck(models.Model):
     def all_cards(self):
         cards = self.cards.all()
         return cards
-
-    # @property
-    # def all_cards(self):
-    #     textcards = self.text_cards.all()
-    #     figurecards = self.figure_cards.all()
-    #     allcards = textcards.join(figurecards)
-    #     allcards=allcards.order_by('pk')
-    #     return allcards
         
 
 
@@ -34,41 +23,34 @@ class Card(models.Model):
     subject = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     decks = models.ManyToManyField(Deck, related_name='cards')
-    # objects = InheritanceManager()
+    figure_raw = models.ImageField(blank=True, null=True)
+    question = models.TextField(blank=True, null=True)
+
+
+    def __str__(self):
+        return f'{self.title}'
 
     @property
-    def type(self):
-        if len(FigureCard.objects.all().filter(pk=self.pk)) > 0:
-            type = 'Figure'
-        elif len(TextCard.objects.all().filter(pk=self.pk)) > 0:
-            type = 'Text'
+    def all_decks(self):
+        decks = self.decks.all()
+        return decks
+
+    @property
+    def answer_score(self):
+        score = 0
+        return score
+
+    @property
+    def current_frequency(self):
+        if score == 0:
+            daily_mult = 2
+        elif score ==1:
+            daily_mult = 1
+        elif score ==2:
+            daily_mult = 0.5
         else:
-            type = 'Other'
-        return type
-
-    def __str__(self):
-        return f'{self.title}'
-
-
-class FigureCard(Card):
-    raw_image = models.FileField(
-        upload_to='images', null=True, verbose_name=None)
-    card_type = 'Figure'
-    
-    
-    def __str__(self):
-        return f'{self.title}'
-
-
-
-class TextCard(Card):
-    question = models.TextField(blank=True, null=True)
-    card_type = 'Text'
-
-    def __str__(self):
-        return f'{self.title}'
-
-
+            daily_mult = 0.25
+        return daily_mult
 
 
 
