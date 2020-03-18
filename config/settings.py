@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_heroku',
-    'image_cropping',
+    
 
     # Project-specific
     'users',
@@ -178,12 +178,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     }
 }
-
-# imagecrop settings: 
-# from easy_thumbnails.conf import Settings as thumbnail_settings
-# THUMBNAIL_PROCESSORS = (
-#     'image_cropping.thumbnail_processors.crop_corners',
-# ) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 # Configure Django App for Heroku.
 import django_heroku

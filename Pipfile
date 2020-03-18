@@ -23,7 +23,6 @@ django-heroku = "*"
 gunicorn = "*"
 boto3 = "*"
 django-storages = "*"
-django-image-cropping = "*"
 
 [requires]
 python_version = "3.8"
