@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_heroku',
+    'image_cropping',
 
     # Project-specific
     'users',
@@ -148,6 +149,7 @@ INTERNAL_IPS = [
     # ...
 ]
 
+# registration redux settings
 REGISTRATION_DEFAULT_FROM_EMAIL = True
 REGISTRATION_EMAIL_HTML = True
 LOGIN_REDIRECT_URL = '/'
@@ -155,7 +157,7 @@ ACCOUNT_ACTIVATION_DAYS = 7
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
-
+#  amazon web services settings
 if env('USE_S3'):
     AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
@@ -166,6 +168,7 @@ if env('USE_S3'):
     }
     DEFAULT_FILE_STORAGE = 'flashcards.storage_backends.MediaStorage'
 
+# REST API settings
 REST_FRAMEWORK = {
     # 'DEFAULT_AUTHENTICATION_CLASSES': [
     #     'rest_framework.authentication.BasicAuthentication',
@@ -175,6 +178,12 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     }
 }
+
+# imagecrop settings: 
+# from easy_thumbnails.conf import Settings as thumbnail_settings
+# THUMBNAIL_PROCESSORS = (
+#     'image_cropping.thumbnail_processors.crop_corners',
+# ) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 # Configure Django App for Heroku.
 import django_heroku

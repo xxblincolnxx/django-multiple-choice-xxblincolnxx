@@ -88,12 +88,14 @@ function setupDeckButtons () {
             const answerbutton = document.createElement('button')
             answerbutton.innerText = 'SHOW ANSWER'
             answerbutton.classList.add('form-butt')
+            answerbutton.classList.add('card-butt')
             answerbutton.dataset.showhide = '#answer{card.id}'
             newDiv.appendChild(answerbutton)
 
             const answer = document.createElement('p')
             answer.innerText = card.answer
             answer.classList.add('card-text')
+            answer.classList.add('dn')
             answer.id = 'answer{card.id}'
             newDiv.appendChild(answer)
 
