@@ -47,7 +47,7 @@
     <div class='col'>
         <p data-stuff='col3' class='col-heading'>New Card</p>
         <div id='col3' class='col-container dn'>
-            <form class='col-form' action="" method='POST'>
+            <form enctype="multipart/form-data" class='col-form' action="" method='POST'>
                 {% csrf_token %}
                 {{form.as_table}}
                 <button class='form-butt' type='Submit' value='Submit'>Submit</button>

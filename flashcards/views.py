@@ -27,7 +27,7 @@ class DeckView(viewsets.ModelViewSet):
 @login_required
 def homepage(request):
     if request.method == "POST":
-        form = CardForm(request.POST)
+        form = CardForm(request.POST, request.FILES)
         if form.is_valid():
             # thecard = form.save(commit=False)
             # thecard.user = request.user
