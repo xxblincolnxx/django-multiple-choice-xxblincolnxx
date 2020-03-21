@@ -4,6 +4,7 @@
     --Gray: rgb(57, 74, 75);
     --Lime: rgb(162, 199, 164);
     --Topaz: rgb(184, 95, 110);
+    --Button: rgb(133, 63, 75);
     --Glow: rgb(252, 255, 101);
     --GlowBlue: rgb(46, 112, 255);
     --stroke-green: rgb(37, 51, 56);
@@ -235,21 +236,22 @@ img {
 }
 
 .col-form label{
-    width: 20%;
-    font-weight: bold;
+    width: 100%;
+    font-weight: lighter;
+    color: var(--background1);
     font-size: .7rem;
-    padding-bottom: 5px;
-    text-align: right;
+    padding: 5px;
+    text-align: center;
     font-family: var(--normal);
 }
 
 .col-form input, textarea, select {
-    width: 78%;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-right: 5px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 2px;
+    margin-bottom: 8px;
     border-radius: 5px;
-    border: none;
+    border: .5px solid var(--background2);
     font-family: var(--normal);
     font-size: .7rem;
     color: var(--background2);
@@ -263,7 +265,7 @@ img {
 } */
 
 .form-butt {
-    width: 50%;
+    width: 47%;
     padding: 3px;
     margin: 3px;
     margin-top: 10px;
@@ -274,7 +276,7 @@ img {
     text-decoration: none;
     text-align: center;
     color: var(--background2);
-    background-color: var(--stroke-green);
+    background-color: var(--Button);
     border-radius: 5px;
 }
 
@@ -290,38 +292,7 @@ img {
     border-bottom: 1px solid var(--background2);
 }
 
-/* --------media queries------------------ */
-@media only screen and (max-width: 800px){
-    .container {
-        width: 95%;
-        margin: 0 auto;
-        margin-top: 10px;
-        min-width: 300px;
-    }
-    .main {
-        display: flex;
-        width:100%;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    .mid {
-        margin-right: 0px;
-        margin-left: 0px;
-    }
-    .col {
-        width: 100%;
-    }
-    .col-form label{
-        width: 12%;
-    }
-    
-    .col-form input, textarea {
-        width: 87%;
-    }
-    .col-form input, textarea, select {
-        width: 100%;
-    }   
-}
+
 /* --------Specific to view decks------ */
 .left-aside {
     width: 25%;
@@ -334,7 +305,7 @@ img {
     justify-content: flex-start;
 }
 
-.eightyfive {
+.deck-page-display {
     width:75%;
     display:flex;
     flex-wrap: wrap;
@@ -386,6 +357,7 @@ img {
 }
 
 .deck-sub-heading {
+    width: 100%;
     color: var(--stroke-green);
     font-weight: bold;
     font-size: .9rem;   
@@ -416,6 +388,10 @@ img {
     text-transform: uppercase;
     text-align: center;
 }
+
+.deck-form input:hover::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--background3);
+}
   
 
 .cardlink {
@@ -441,7 +417,10 @@ img {
     flex-wrap: wrap;
     width: 200px;
     height: 250px;
+    box-shadow: 0px 0px 3px var(--Lime),-3px 3px 4px var(--Black);
+    border-radius: 5px;
     margin: 10px;
+
 }
 
 .card-display {
@@ -474,19 +453,76 @@ img {
 .card-butt {
     height: 2rem;
     width: 100%;
-    align-self: flex-end
+    align-self: flex-end;
+    background-color: var(--Gray);
 }
 
-/* --------OVERRIDER CLASSES----------- */
-.darkshadowbox {
-    margin-top: 5px;
-    box-shadow: 0px 0px 3px var(--Lime),-3px 3px 4px var(--Black);
-    /* padding: 2px; */
-    border-radius: 5px;
-    display: flex; 
-   
-    
+.answer {
+    background-color:var(--stroke-green);
 }
+
+.answer-butt {
+    background-color: var(--background2);
+    color: var(--stroke-green)
+}
+
+
+
+/* ------CARD QUIZ STUFF ---------------- */
+/* --------media queries------------------ */
+@media only screen and (max-width: 800px){
+    .container {
+        width: 95%;
+        margin: 0 auto;
+        margin-top: 10px;
+        min-width: 300px;
+    }
+    .main {
+        display: flex;
+        width:100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .mid {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    .col {
+        width: 100%;
+    }
+
+    .col-item {
+        width: 100%;
+    }
+    .col-form label{
+        width: 12%;
+    }
+    
+    .col-form input, textarea {
+        width: 87%;
+    }
+    .col-form input, textarea, select {
+        width: 100%;
+    } 
+
+    .deck-item {
+        width: 100%;
+    }
+    .deck-contain {
+        flex-wrap: wrap
+    }
+    .left-aside {
+        width: 100%
+    }
+    .deck-page-display {
+        width: 100%
+    }
+    .deck-sub-heading {
+        width: 100%
+    }
+}
+/* --------OVERRIDER CLASSES----------- */
+
 
 .dflx {
     display: flex;
@@ -499,10 +535,32 @@ a {
     color: var(--background3)
 } 
 
+.darkbg {
+    background-color: var(--stroke-green)
+}
 .hoverglow:hover{
     box-shadow: 0px 0px 3px var(--Topaz),0px 0px 10px var(--Glow);
 }
 
+.textglow{
+    color: var(--background2);
+    text-shadow: 0px 0px 3px var(--Topaz),0px 0px 10px var(--Glow);
+}
+
+.darkshadowbox {
+    margin-top: 5px;
+    box-shadow: 0px 0px 3px var(--Lime),-3px 3px 4px var(--Black);
+    border-radius: 5px;
+    display: flex; 
+}
+
 .dn {
     display: none;
+}
+
+input::placeholder, textarea::placeholder{ /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--background2);
+    opacity: .5;
+    text-transform: uppercase;
+    text-align: center;
 }

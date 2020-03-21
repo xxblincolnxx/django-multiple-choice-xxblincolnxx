@@ -12,8 +12,7 @@
 </header>
 <nav class='nav'>
     <ul class='nav-list'>
-        <li class='nav-item'><a href="">Take Quiz</a></li>
-        <li class='nav-item'><a href="{% url 'view_decks' %}">View Decks</a></li>
+        <li class='nav-item'><a href="{% url 'view_decks' %}">Take Quiz</a></li>
     </ul>
 </nav>
 </div>
@@ -39,7 +38,7 @@
             {% for deck in decks %}
             <div id="{{deck.pk}}" class="col-item">
                 <p class='prev1'>{{deck.name}}</p>
-                <a class='form-butt' href="{% url 'take_quiz' deck.pk %}" >Take Quiz!</a>
+                <p class='prev2'>Cards: {{deck.cards.count}}</p>
             </div>
             {% endfor %}
         </div>

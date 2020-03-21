@@ -13,7 +13,7 @@
     {% for deck in decks %}
       <div class='deck-item'>
         <p class='deck-heading'>{{ deck.name }}</p>
-        <button id={{deck.pk}} data-url="{% url 'show_cards' deck.pk %}" class='form-butt shwcards'>SHOW CARDS</button>
+        <button id={{deck.pk}} data-url="{% url 'show_cards' deck.pk %}" class='form-butt shwcards'>SHOW/QUIZ</button>
         <div class='col-item'>
           <p class='deck-sub-heading'>Cards in this deck:</p>
           {% for card in deck.all_cards %}
@@ -28,17 +28,27 @@
     {% endfor %}
 
   </aside>
-  <main class='eightyfive'>
+<main class='deck-page-display'>
   <div class='deck-hider'>
-    <p id='newdeckformSH' data-showhide='deckcreate'>Create New Deck</p>
+    <button id='newdeckformSH' data-showhide='deckcreate' class='form-butt'>Create New Deck</button>
     <form id='deckcreate' method='POST' class='col-form  deck-form dn'>
       {% csrf_token %}
-      <input type="text" id="name" required>
+      <input type="text" id="name" placeholder='Deck Name' required>
       <button class='form-butt' id='create-deck' type='submit'>CREATE DECK</button>
     </form>
   </div>
   <div id='card-display' class='card-display'></div>
-  </main>
+  <div id='quizcontain'>
+    <div id='quiz-theater' class='quiz-theater'>
+      <button id='wrong-button'>WRONG</button>
+      <div id='quiz-card' class='quiz-card'></div>
+      <button id='correct-button'>CORRECT</button>
+    </div>
+
+    <div id='quiz-results'>
+    </div>
+</div>
+</main>
 </div>
 
 </body>

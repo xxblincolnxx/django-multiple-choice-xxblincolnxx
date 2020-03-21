@@ -46,6 +46,19 @@ function showHide (buttonID) {
   })
 }
 
+function showHideLoop (loopedOverElement) {
+  loopedOverElement.addEventListener('click', function (event) {
+    loopedOverElement.parentElement.classList.add('dn')
+    const query = document.getElementById(event.target.dataset.showhide)
+    console.log(query)
+    if (query.classList.contains('dn')) {
+      show(query)
+    } else {
+      hide(query)
+    }
+  })
+}
+
 function setupDeckButtons () {
   const buttons = dqsA('.shwcards')
   for (const button of buttons) {
@@ -60,7 +73,7 @@ function setupDeckButtons () {
             const newDiv = document.createElement('div')
             newDiv.classList.add('card')
             newDiv.classList.add('darkshadowbox')
-            newDiv.id = card.id
+            newDiv.id = `card${card.id}`
 
             const title = document.createElement('p')
             title.innerText = card.title
@@ -85,18 +98,44 @@ function setupDeckButtons () {
 
             const answerbutton = document.createElement('button')
             answerbutton.innerText = 'SHOW ANSWER'
+            answerbutton.id = `showbutt${card.id}`
             answerbutton.classList.add('form-butt')
-            answerbutton.dataset.showhide = '#answer{card.id}'
+            answerbutton.classList.add('card-butt')
+            answerbutton.dataset.showhide = `answer${card.id}`
             newDiv.appendChild(answerbutton)
+            // -------------------answer card ---------------------------------
+            const answerDiv = document.createElement('div')
+            answerDiv.id = `answer${card.id}`
+            answerDiv.classList.add('card')
+            answerDiv.classList.add('answer')
+            answerDiv.classList.add('dn')
+            answerDiv.classList.add('darkshadowbox')
+
+            const title2 = document.createElement('p')
+            title2.innerText = card.title
+            title2.classList.add('card-title')
+            title2.classList.add('textglow')
+            answerDiv.appendChild(title2)
 
             const answer = document.createElement('p')
             answer.innerText = card.answer
             answer.classList.add('card-text')
-            answer.classList.add('dn')
-            answer.id = 'answer{card.id}'
-            newDiv.appendChild(answer)
+            answer.classList.add('textglow')
+            answer.dataset.showhide = `answer${card.id}`
+            answer.id = `answer${card.id}`
+            answerDiv.appendChild(answer)
+
+            const showcardbutton = document.createElement('button')
+            showcardbutton.innerText = 'BACK TO CARD'
+            showcardbutton.id = `showcard${card.id}`
+            showcardbutton.classList.add('form-butt')
+            showcardbutton.classList.add('card-butt')
+            showcardbutton.classList.add('answer-butt')
+            showcardbutton.dataset.showhide = `card${card.id}`
+            answerDiv.appendChild(showcardbutton)
 
             display.appendChild(newDiv)
+            display.appendChild(answerDiv)
           }
           setupCardButtons()
         })
@@ -105,11 +144,11 @@ function setupDeckButtons () {
 }
 
 function setupCardButtons () {
-
+  const buttons = dqsA('.card-butt')
+  for (const button of buttons) {
+    showHideLoop(button)
+  }
 }
-
-// function showDeckCards (cardset) {
-// }
 
 setupDeckButtons()
 showHide('#newdeckformSH')
